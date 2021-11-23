@@ -9,6 +9,7 @@ export const colors = {
     lightBrown: "#A62F03",
     darkBrown: "#591902",
     bgGradient: "linear-gradient(180deg, rgba(1,52,64,1) 0%, rgba(0,83,103,1) 100%)",
+    blackOpacity: "rgba(0, 0, 0, .5)"
 };
 
 export const fonts = {
@@ -45,10 +46,6 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 18px;
         font-family: ${fonts.lato};
     }
-
-    
-
-
 `;
 
 export const AppWrapper = styled.div`

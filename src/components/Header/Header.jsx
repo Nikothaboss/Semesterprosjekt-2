@@ -1,11 +1,13 @@
 import React from 'react'
-import { Flex } from '@chakra-ui/layout'
+import { Flex, Box, Text } from '@chakra-ui/layout'
 import { HeaderStyled } from './header.styled'
+import { MdComputer, MdAccountCircle, MdShoppingCart } from "react-icons/md";
+
 
 const Logo = () =>{
     return (
         <svg width="90" height="90" viewBox="0 0 90 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M88.5 45.5002C88.5 69.6997 69.015 89.3002 45 89.3002C20.985 89.3002 1.5 69.6997 1.5 45.5002C1.5 21.3007 20.985 1.7002 45 1.7002C69.015 1.7002 88.5 21.3007 88.5 45.5002Z" fill="black" fill-opacity="0.7" stroke="#A62F03" stroke-width="3"/>
+            <path d="M88.5 45.5002C88.5 69.6997 69.015 89.3002 45 89.3002C20.985 89.3002 1.5 69.6997 1.5 45.5002C1.5 21.3007 20.985 1.7002 45 1.7002C69.015 1.7002 88.5 21.3007 88.5 45.5002Z" fill="black" fillOpacity="0.7" stroke="#A62F03" strokeWidth="3"/>
             <path d="M64.9453 45.4184L62.676 27.8979C62.3921 25.7186 61.4019 23.7251 59.8872 22.2838C58.3725 20.8424 56.4352 20.0501 54.4314 20.0525H35.5687C31.4255 20.0525 27.907 23.3919 27.324 27.8979L25.0547 45.4184C24.5967 48.9409 27.0742 52.0744 30.3013 52.0744C31.717 52.0744 33.0495 51.4569 34.0488 50.359L38.7541 45.2126H51.2459L55.9304 50.359C56.9297 51.4569 58.283 52.0744 59.6779 52.0744C62.9258 52.0744 65.4034 48.9409 64.9453 45.4184ZM42.918 33.7762H38.7541V38.3507H36.6721V33.7762H32.5082V31.4889H36.6721V26.9143H38.7541V31.4889H42.918V33.7762ZM51.2459 31.4889C50.1008 31.4889 49.164 30.4596 49.164 29.2016C49.164 27.9436 50.1008 26.9143 51.2459 26.9143C52.391 26.9143 53.3279 27.9436 53.3279 29.2016C53.3279 30.4596 52.391 31.4889 51.2459 31.4889ZM55.4099 38.3507C54.2648 38.3507 53.3279 37.3215 53.3279 36.0635C53.3279 34.8055 54.2648 33.7762 55.4099 33.7762C56.555 33.7762 57.4919 34.8055 57.4919 36.0635C57.4919 37.3215 56.555 38.3507 55.4099 38.3507Z" fill="#A62F03"/>
             <ellipse cx="50.8607" cy="29.2531" rx="2.86072" ry="2.87979" fill="#F26B1D"/>
             <ellipse cx="54.8607" cy="36.2997" rx="2.86072" ry="2.87979" fill="#04C4D9"/>
@@ -16,18 +18,47 @@ const Logo = () =>{
 
 const Searchbar = () =>{
     return (
-        <div className="searchbar">
-            <input type="text" placeholder="Search" />
-        </div>
+        <Flex  alignItems="center" width="50%">
+            <input type="text" placeholder="Search" className="searchbar"/>
+        </Flex>
     )
+}
+
+const Nav = () =>{
+    return (
+        <Flex alignItems="center" justifyContent="space-between" width="25%">
+            <Flex className="nav-item" flexDir="column" alignItems="center">
+                <Box className="circle">
+                    <MdComputer size="1.5rem"/>
+                </Box>
+                <Text w="100%" textAlign="center">Products</Text>
+            </Flex>
+
+            <Flex className="nav-item" flexDir="column" alignItems="center">
+                <Box className="circle">
+                    <MdAccountCircle size="1.5rem"/>
+                </Box>
+                <Text w="100%" textAlign="center">Login</Text>
+            </Flex>
+
+            <Flex className="nav-item" flexDir="column" alignItems="center">
+                <Box className="circle">
+                    <MdShoppingCart size="1.5rem"/>
+                </Box>
+                <Text w="100%" textAlign="center">Cart</Text>
+            </Flex>
+        </Flex>
+    )
+  
 }
 
 const Header = () => {
     return (
         <HeaderStyled >
-            <Flex>
+            <Flex w="1100px" m="auto" justifyContent="space-between">
                 <Logo />
                 <Searchbar />
+                <Nav />
             </Flex>
         </HeaderStyled>
     )
