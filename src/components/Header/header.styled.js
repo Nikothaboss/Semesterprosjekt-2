@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../app.styled";
+// import { Box } from "@chakra-ui/layout";
+import { motion } from "framer-motion";
 
-export const HeaderStyled = styled.header `
+
+
+export const HeaderStyled = styled(motion.header) `
     padding: 20px;
     background: ${colors.blackOpacity};
     .searchbar{
@@ -12,15 +16,23 @@ export const HeaderStyled = styled.header `
         width: 100%;
         border-radius: 5px;
         ::placeholder{
-            color:  white;
+            color: white;
+            opacity: .8;
         }
+    }
+
+    .nav-item{
+        flex-direction: column;
+        align-items: center;
     }
 
     .circle{
         background: ${colors.blackOpacity};
         border-radius: 50%;
         border: 2px solid ${colors.lightBrown};
-        padding: 15px;
+        padding: .5rem;
+        justify-content: center;
+        align-items: center;
     }
 
 `
