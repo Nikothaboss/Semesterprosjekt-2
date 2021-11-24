@@ -12,8 +12,8 @@ function App() {
     <Header />
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.key}>
-        <Route path="/" element={<Home />}>
-          
+        <Route exact path="/">
+          <Home />
         </Route>
       </Switch>
     </AnimatePresence>

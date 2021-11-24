@@ -43,7 +43,7 @@ const Header = () => {
     return (
         <HeaderStyled 
         style={location.pathname === "/" ? {position: "absolute", left: 0, right: 0} : ""}>
-            <Flex w="1100px" m="auto" justifyContent="space-between">
+            <Flex maxWidth="1100px" m="auto" justifyContent="space-between">
                 <Logo />
                 <Searchbar />
                 <Nav />
