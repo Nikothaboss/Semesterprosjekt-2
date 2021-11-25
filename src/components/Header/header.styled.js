@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 
 export const HeaderStyled = styled(motion.header) `
-    padding: 20px;
+    padding: 10px 20px;
     background: ${colors.blackOpacity};
     .searchbar{
         color: white;

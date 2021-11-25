@@ -22,18 +22,16 @@ export const HomeStyled = styled(Box)`
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transform: translateY(20px);
+            transform: translateY(30px);
 
             h1, h2{ 
-            font-size: 48px;
+            font-size: 36px;
             font-family: ${fonts.poppins};
             font-weight: 600;
             text-shadow: 0px 2px ${colors.blackOpacity}, 0px 4px ${colors.blackOpacity}, 0px 6px ${colors.blackOpacity};
         }
 
         }
-
-
 
         h2{
             color: ${colors.orange}
