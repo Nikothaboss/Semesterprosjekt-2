@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 export const useFetch = (url, request) =>{
-    const [response, setResponse] = useState([])
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [hasError, setHasError] = useState(false)
 
@@ -12,7 +12,7 @@ export const useFetch = (url, request) =>{
             const res = await fetch(url, request)
             const data = await res.json()
 
-            setResponse(data)
+            setData(data)
             setLoading(false)
         } catch{
             setHasError(true)
@@ -24,5 +24,5 @@ export const useFetch = (url, request) =>{
         getProducts();
     }, [url, getProducts])
 
-    return { response, loading, hasError }
+    return { data, loading, hasError }
 }

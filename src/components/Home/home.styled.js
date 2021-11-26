@@ -5,7 +5,7 @@ import { colors, fonts } from "../../app.styled";
 
 export const HomeStyled = styled(Box)`
     .bg-img{
-        height: 62vh;
+        height: 50vh;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -49,7 +49,14 @@ export const HomeStyled = styled(Box)`
             width: 100%;
             text-align: center;
         }
+
+
     }
+
+    .featured{
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 20px;
+        }
     
     
 `
