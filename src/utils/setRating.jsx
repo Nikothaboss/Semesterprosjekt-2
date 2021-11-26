@@ -6,61 +6,61 @@ export const checkRating = (rating) => {
         case 0:
             return (
                 <HStack>
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
+                    <MdStarOutline color="yellow" />
+                    <MdStarOutline color="yellow" />
+                    <MdStarOutline color="yellow" />
+                    <MdStarOutline color="yellow" />
+                    <MdStarOutline color="yellow" />
                 </HStack>
             )
         case 1: 
                 return (
                     <HStack>
-                    <MdStar />
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStarOutline color="yellow" size="2.2rem" />
+                    <MdStarOutline  color="yellow" size="2.2rem"/>
+                    <MdStarOutline color="yellow" size="2.2rem" />
+                    <MdStarOutline  color="yellow" size="2.2rem"/>
                 </HStack>
                 )
         case 2: 
                 return (
                     <HStack>
-                    <MdStar />
-                    <MdStar />
-                    <MdStarOutline />
-                    <MdStarOutline />
-                    <MdStarOutline />
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStarOutline  color="yellow" size="2.2rem"/>
+                    <MdStarOutline color="yellow" size="2.2rem" />
+                    <MdStarOutline  color="yellow" size="2.2rem"/>
                 </HStack>
                 )
         case 3: 
                 return (
                     <HStack>
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStarOutline />
-                    <MdStarOutline />
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStarOutline color="yellow" size="2.2rem" />
+                    <MdStarOutline  color="yellow" size="2.2rem"/>
                 </HStack>
                 )
         case 4: 
                 return (
                     <HStack>
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStarOutline />
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStarOutline  size="2.2rem" color="yellow"/>
                 </HStack>
                 )
         case 5: 
                 return (
                     <HStack>
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
-                    <MdStar />
+                    <MdStar color="yellow" size="2.2rem"/>
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStar color="yellow" size="2.2rem" />
+                    <MdStar  color="yellow" size="2.2rem"/>
+                    <MdStar  color="yellow" size="2.2rem"/>
                 </HStack>
                 )
         default :
