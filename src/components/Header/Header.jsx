@@ -41,7 +41,6 @@ const Nav = () =>{
 const Header = () => {
     const {screenWidth} = useResize()
     const location = useLocation()
-    console.log(screenWidth)
     
     return (
         <HeaderStyled 

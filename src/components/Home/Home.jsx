@@ -2,77 +2,14 @@ import React from 'react'
 import hero from "../../img/hero-bg.jpg"
 import { HomeStyled } from './home.styled'
 import { Link } from 'react-router-dom'
-import { Box, Flex, Grid, Heading, Text, HStack } from '@chakra-ui/layout'
+import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
 import { useFetch } from '../../utils/fetch'
 import { base_url } from '../../utils/API'
-import { MdStar, MdStarOutline } from 'react-icons/md'
+import { checkRating } from '../../utils/setRating'
 
 const FeaturedCard = ({image_url, title, id, rating, inStock, description}) =>{
 
-    const checkRating = (rating) => {
-        switch(rating) {
-            case 0:
-                return (
-                    <HStack>
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                    </HStack>
-                )
-            case 1: 
-                    return (
-                        <HStack>
-                        <MdStar />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                    </HStack>
-                    )
-            case 2: 
-                    return (
-                        <HStack>
-                        <MdStar />
-                        <MdStar />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                    </HStack>
-                    )
-            case 3: 
-                    return (
-                        <HStack>
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStarOutline />
-                        <MdStarOutline />
-                    </HStack>
-                    )
-            case 4: 
-                    return (
-                        <HStack>
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStarOutline />
-                    </HStack>
-                    )
-            case 5: 
-                    return (
-                        <HStack>
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                        <MdStar />
-                    </HStack>
-                    )
-        }
-    }
+
     return (
         <Flex flexDir="column" className="featuredCard" >
             <img src={image_url} alt={title} key={id}/>
@@ -112,6 +49,7 @@ const Home = () => {
                         inStock={item.inStock}
                         description={item.description}
                         rating={item.rating}
+                        key={item.id}
                         />
                         
                     )
