@@ -2,8 +2,9 @@ import React from 'react'
 import Logo from './Logo';
 import { Flex, Text } from '@chakra-ui/layout'
 import { HeaderStyled } from './header.styled'
-import { MdComputer, MdAccountCircle, MdShoppingCart } from "react-icons/md";
+import { MdComputer, MdAccountCircle, MdShoppingCart, MdMenu } from "react-icons/md";
 import { NavLink, useLocation } from 'react-router-dom';
+import { useResize } from '../../utils/resize';
 
 const Searchbar = () =>{
     return (
@@ -38,7 +39,9 @@ const Nav = () =>{
 }
 
 const Header = () => {
+    const {screenWidth} = useResize()
     const location = useLocation()
+    console.log(screenWidth)
     
     return (
         <HeaderStyled 
@@ -46,7 +49,7 @@ const Header = () => {
             <Flex maxWidth="1100px" m="auto" justifyContent="space-between">
                 <Logo />
                 <Searchbar />
-                <Nav />
+                {screenWidth > 768 ? <Nav /> : <MdMenu size="1.2rem" />}
             </Flex>
         </HeaderStyled>
     )

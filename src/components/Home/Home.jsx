@@ -6,15 +6,11 @@ import { Box, Flex, Grid } from '@chakra-ui/layout'
 import { useFetch } from '../../utils/fetch'
 import { base_url } from '../../utils/API'
 
-
-
-
-
-
-
-
- 
-
+const FeaturedCard = () =>{
+    return (
+        null
+    )
+}
 
 const Home = () => {
 
