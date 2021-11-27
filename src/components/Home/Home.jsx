@@ -6,21 +6,30 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
 import { useFetch } from '../../utils/fetch'
 import { base_url } from '../../utils/API'
 import { checkRating } from '../../utils/setRating'
+import { motion } from 'framer-motion'
+import { Button } from '@chakra-ui/button'
+import { colors } from '../../app.styled'
 
 const FeaturedCard = ({image_url, title, id, rating, inStock, description}) =>{
-
+    const MotionFlex = motion(Flex);
 
     return (
-        <Flex flexDir="column" className="featuredCard" >
+        <MotionFlex whileHover={{scale: 1.01}} flexDir="column" className="featuredCard" >
             <img src={image_url} alt={title} key={id}/>
             <Flex className="cardInfo">
                 <Heading className="title">{title}</Heading>
-                <Text>{description}</Text>
+                <Text>{description.length > 90 ? description.substring(0, 65) + "..." : description }</Text>
                 {checkRating(rating)}
-                {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> }
+                
+                <Flex justifyContent="space-between" alignItems="center" w="100%">
+                    {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> }
+                    
+                    <Button bg={colors.orange} size="sm" color="#f2f2f2">Add to Cart</Button>
+                </Flex>
+                
 
             </Flex>
-        </Flex>
+        </MotionFlex>
     )
 }
 

@@ -61,6 +61,13 @@ export const HomeStyled = styled(Box)`
 
             .featuredCard{
                 align-items: center;
+                border: 1px solid white;
+
+                &:hover{
+                    border: 1px solid black
+                }
+
+            
 
                 .cardInfo {
                     background: #f2f2f2;
@@ -68,14 +75,21 @@ export const HomeStyled = styled(Box)`
                     color: #3d3d3d;
                     flex-direction: column;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-start;
+
+                    *{
+                        margin-bottom: 7px;
+                    }
+
 
                     .title{
                         font-size: 18px;
+                        /* margin-bottom: 10px; */
                     }
 
                     p{
                         font-size: 16px;
+                        /* margin-bottom: 10px; */
                     } 
                 }
 
