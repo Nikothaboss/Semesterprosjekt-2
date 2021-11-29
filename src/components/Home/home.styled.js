@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { Box } from "@chakra-ui/layout";
-import { colors, fonts } from "../../app.styled";
+import { Box, Flex } from "@chakra-ui/layout";
+import { colors, device, fonts } from "../../app.styled";
+import { motion } from "framer-motion";
+
+const MotionFlex = motion(Flex);
 
 
 export const HomeStyled = styled(Box)`
@@ -56,47 +59,54 @@ export const HomeStyled = styled(Box)`
     }
 
     .featured{
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             margin-top: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 20px;
 
-            .featuredCard{
-                align-items: center;
-                border: 1px solid white;
-
-                &:hover{
-                    border: 1px solid black
-                }
-
-            
-
-                .cardInfo {
-                    background: #f2f2f2;
-                    padding: 1rem;
-                    color: #3d3d3d;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: flex-start;
-
-                    *{
-                        margin-bottom: 7px;
-                    }
-
-
-                    .title{
-                        font-size: 18px;
-                        /* margin-bottom: 10px; */
-                    }
-
-                    p{
-                        font-size: 16px;
-                        /* margin-bottom: 10px; */
-                    } 
-                }
-
-
-            }    
+    
 
         }
 
 
+`
+
+export const StyledCard = styled(Box)`
+    .featuredCard{
+    align-items: center;
+    border: 1px solid white;
+    &:hover{
+        border: 1px solid black
+    }
+
+
+
+    .cardInfo {
+        height: 243px;
+        background: #f2f2f2;
+        padding: 1rem;
+        color: #3d3d3d;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        /* *{
+            margin-bottom: 7px;
+        } */
+
+
+        .title{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p{
+            font-size: 16px;
+            margin-bottom: 10px;
+        } 
+    }
+
+
+    }
 `

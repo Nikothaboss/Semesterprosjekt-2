@@ -8,6 +8,7 @@ export const theme = extendTheme({
                 background: colors.bgGradient,
                 backgroundRepeat: "no-repeat",
                 minHeight: "100vh",
+                maxHeight: "100%"
             }
         }
     }
