@@ -14,7 +14,7 @@ const Products = () => {
                     image_url={item.image_url} 
                     title={item.title} 
                     id={item.id} 
-                    inStock={item.inStock}
+                    price={item.price}
                     description={item.description}
                     rating={item.rating}
                     key={item.id}

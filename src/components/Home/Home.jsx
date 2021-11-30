@@ -25,7 +25,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description})
             
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
                         {/* {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> } */}
-                        <h3>{price}</h3>
+                        <h3>${price}</h3>
             
                         <Button bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} >Add</Button>
                     </Flex>
