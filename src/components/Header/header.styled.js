@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../app.styled";
-// import { Box } from "@chakra-ui/layout";
+import { Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 
 
@@ -35,4 +35,12 @@ export const HeaderStyled = styled(motion.header) `
         align-items: center;
     }
 
+`
+
+export const ModalStyled = styled(Flex) ` 
+    width: 1100px;
+    margin: auto;
+    img{
+        width: 150px;
+    }
 `
