@@ -11,7 +11,7 @@ import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
 
-export const FeaturedCard = ({image_url, title, id, rating, inStock, description}) =>{
+export const FeaturedCard = ({image_url, title, id, rating, price, description}) =>{
     const MotionFlex = motion(Flex);
 
     return (
@@ -24,7 +24,8 @@ export const FeaturedCard = ({image_url, title, id, rating, inStock, description
                     {checkRating(rating)}
             
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
-                        {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> }
+                        {/* {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> } */}
+                        <h3>{price}</h3>
             
                         <Button bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} >Add</Button>
                     </Flex>
@@ -57,7 +58,7 @@ const Home = () => {
                         image_url={item.image_url} 
                         title={item.title} 
                         id={item.id} 
-                        inStock={item.inStock}
+                        price={item.price}
                         description={item.description}
                         rating={item.rating}
                         key={item.id}

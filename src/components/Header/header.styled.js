@@ -24,6 +24,7 @@ export const HeaderStyled = styled(motion.header) `
     .nav-item{
         flex-direction: column;
         align-items: center;
+        justify-content: flex-start;
     }
 
     .circle{
@@ -37,10 +38,35 @@ export const HeaderStyled = styled(motion.header) `
 
 `
 
-export const ModalStyled = styled(Flex) ` 
+export const SearchBarStyled = styled(Flex) ` 
+flex-direction: column;
     width: 1100px;
     margin: auto;
+    align-items: center;
+
+    .dataResults{
+        position: absolute;
+        /* left: 0; */
+        right: 0;
+        /* border: 1px solid red; */
+        margin-top: 70px;
+        background: ${colors.darkBlue};
+        z-index: 999999999999999999999999999999;
+        width: 100%;
+    }
     img{
         width: 150px;
     }
+`
+
+export const DataItemStyled = styled(Flex) `
+    /* border: 1px solid red; */
+    width: 50%;
+    margin: 5px auto;
+
+    h4{
+        padding: 0 20px
+    }
+
+
 `

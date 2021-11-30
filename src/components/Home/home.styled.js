@@ -19,13 +19,15 @@ export const HomeStyled = styled(Box)`
         flex-direction: column;
 
         .hero-text{
+            height: 98%;
+            width: 40%;
             padding: 30px;
             border-radius: 5px;
             background: ${colors.blackOpacity};
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transform: translateY(30px);
+            /* transform: translateY(30px); */
 
             h2{
             color: ${colors.orange}
@@ -36,10 +38,10 @@ export const HomeStyled = styled(Box)`
             }
 
             h1, h2{ 
-            font-size: 36px;
+            font-size: 48px;
             font-family: ${fonts.poppins};
             font-weight: 600;
-            text-shadow: 0px 2px ${colors.blackOpacity}, 0px 4px ${colors.blackOpacity}, 0px 6px ${colors.blackOpacity};
+            /* text-shadow: 0px 2px ${colors.blackOpacity}, 0px 4px ${colors.blackOpacity}, 0px 6px ${colors.blackOpacity}; */
         }
 
         }

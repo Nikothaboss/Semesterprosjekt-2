@@ -3,7 +3,7 @@ import { MdStar, MdStarOutline } from "react-icons/md"
 import { colors } from "../app.styled"
 
 const starColor = colors.lightBrown;
-const starSize = "1.5rem";
+const starSize = "1.3rem";
 
 export const checkRating = (rating) => {
     switch(rating) {
