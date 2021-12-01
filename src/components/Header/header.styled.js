@@ -3,8 +3,6 @@ import { colors } from "../../app.styled";
 import { Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 
-
-
 export const HeaderStyled = styled(motion.header) `
     padding: 10px 20px;
     background: ${colors.blackOpacity};
@@ -60,9 +58,15 @@ flex-direction: column;
 `
 
 export const DataItemStyled = styled(Flex) `
-    /* border: 1px solid red; */
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
     width: 50%;
-    margin: 5px auto;
+    margin: 2px auto;
+
+    &:hover{
+        border-bottom: 1px solid ${colors.lightBrown};
+        border-top: 1px solid ${colors.lightBrown};
+    }
 
     h4{
         padding: 0 20px

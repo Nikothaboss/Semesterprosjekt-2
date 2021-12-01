@@ -54,15 +54,17 @@ const Home = () => {
             <Grid className="featured" maxW="1100px" m="auto">
                 {data.map((item)=>{
                    return item.featured && (
-                        <FeaturedCard 
-                        image_url={item.image_url} 
-                        title={item.title} 
-                        id={item.id} 
-                        price={item.price}
-                        description={item.description}
-                        rating={item.rating}
-                        key={item.id}
-                        />
+                        <Link to={"/Products" + "/" + item.id}>
+                            <FeaturedCard
+                            image_url={item.image_url}
+                            title={item.title}
+                            id={item.id}
+                            price={item.price}
+                            description={item.description}
+                            rating={item.rating}
+                            key={item.id}
+                            />
+                        </Link>
                         
                     )
                 })}
