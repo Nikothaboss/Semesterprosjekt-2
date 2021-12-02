@@ -3,9 +3,9 @@ import SearchBar from './SearchBar';
 import { Flex, Text } from '@chakra-ui/layout'
 import { HeaderStyled } from './header.styled'
 import { MdComputer, MdAccountCircle, MdShoppingCart, MdMenu } from "react-icons/md";
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useResize } from '../../utils/resize';
-import { AnimatePresence } from 'framer-motion';
+// import { AnimatePresence } from 'framer-motion';
 import { useFetch } from '../../utils/fetch';
 import { base_url } from '../../utils/API';
 
@@ -14,10 +14,9 @@ const Header = () => {
     const {data} = useFetch(base_url +"/products")
 
     const Nav = () =>{
-        console.log("nav rendered")
         const NavItem = ({icon, location=""}) =>{
             return (
-            <NavLink exact to={"/" + location}>
+            <NavLink exact={true} to={"/" + location}>
                 <Flex className="nav-item" >
                     <Flex className="circle">
                         {icon}

@@ -15,15 +15,15 @@ function App() {
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.key}>
 
-        <Route exact="true" path="/">
+        <Route exact={true} path="/">
           <Home />
         </Route>
 
-        <Route exact="true" path="/Products">
+        <Route exact={true} path="/Products">
           <Products />
         </Route>
 
-        <Route  path="/Products/:id">
+        <Route exact={true} path="/Products/:id">
           <ProductDetail />
         </Route>
 

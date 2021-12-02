@@ -10,7 +10,7 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
-import { findIndex } from '../../utils/addToCart'
+// import { containsObject } from '../../utils/addToCart'
 // import { addToCart } from '../../utils/addToCart'
 
 export const FeaturedCard = ({image_url, title, id, rating, price, description, onClick}) =>{
@@ -40,26 +40,25 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 
 const Home = () => {
     const {data} = useFetch(base_url + "/products")
-    
     const [cart, setCart] = useState([])
+
+    
     
     const addToCart = (e) =>{
-        const inCart = cart.some(x => x.id == e.target.id)
-        console.log(inCart)
+        const product = data.filter(x => x.id.toString() === e.target.id.toString())[0]
+        const inCart = cart.includes(product)
+        console.log("In Cart ?", inCart)
         if(!inCart){
-            cart.push(data[data.findIndex(product => product.id == e.target.id)])
+            cart.push(product)
             setCart(cart)
             console.log("Add", cart)
         }else{
-            cart.splice(cart.findIndex(product => product.id == e.target.id))
+            cart.splice(cart.indexOf(product), 1)
             setCart(cart)
             console.log("remove", cart)
         }
         
     }
-
-    // console.log(data)
-    
 
     return (
         <HomeStyled>

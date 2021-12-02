@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { Box, Flex } from "@chakra-ui/layout";
-import { colors, device, fonts } from "../../app.styled";
-import { motion } from "framer-motion";
-
-const MotionFlex = motion(Flex);
-
-
+import { Box } from "@chakra-ui/layout";
+import { colors, fonts } from "../../app.styled";
 export const HomeStyled = styled(Box)`
     .bg-img{
         height: 50vh;

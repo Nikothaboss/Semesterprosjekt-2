@@ -1,6 +1,6 @@
 import { useParams } from "react-router"
 import { useFetch } from "../../utils/fetch"
-import { Flex, Text } from "@chakra-ui/layout"
+import { Flex,  } from "@chakra-ui/layout"
 import { base_url } from "../../utils/API"
 import { DetailsStyled } from "./products.styled"
 import { Button } from "@chakra-ui/button"
