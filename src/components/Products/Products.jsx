@@ -22,7 +22,7 @@ const Products = () => {
                         key={item.id}
                         />
                     </Link>)
-                })}
+                 })}
             </Grid>
         </ProductsStyled>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import hero from "../../img/hero-bg.jpg"
 import { HomeStyled, StyledCard } from './home.styled'
 import { useFetch } from '../../utils/fetch'
@@ -10,8 +10,10 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
+import { findIndex } from '../../utils/addToCart'
+// import { addToCart } from '../../utils/addToCart'
 
-export const FeaturedCard = ({image_url, title, id, rating, price, description}) =>{
+export const FeaturedCard = ({image_url, title, id, rating, price, description, onClick}) =>{
     const MotionFlex = motion(Flex);
 
     return (
@@ -27,7 +29,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description})
                         {/* {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> } */}
                         <h3>${price}</h3>
             
-                        <Button bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} >Add</Button>
+                        <Button id={id} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} zIndex="999" >Add</Button>
                     </Flex>
             
                 </Flex>
@@ -37,8 +39,25 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description})
 }
 
 const Home = () => {
-
     const {data} = useFetch(base_url + "/products")
+    
+    const [cart, setCart] = useState([])
+    
+    const addToCart = (e) =>{
+        const inCart = cart.some(x => x.id == e.target.id)
+        console.log(inCart)
+        if(!inCart){
+            cart.push(data[data.findIndex(product => product.id == e.target.id)])
+            setCart(cart)
+            console.log("Add", cart)
+        }else{
+            cart.splice(cart.findIndex(product => product.id == e.target.id))
+            setCart(cart)
+            console.log("remove", cart)
+        }
+        
+    }
+
     // console.log(data)
     
 
@@ -54,7 +73,7 @@ const Home = () => {
             <Grid className="featured" maxW="1100px" m="auto">
                 {data.map((item)=>{
                    return item.featured && (
-                        <Link to={"/Products" + "/" + item.id}>
+                        // <Link to={"/Products" + "/" + item.id}>
                             <FeaturedCard
                             image_url={item.image_url}
                             title={item.title}
@@ -63,8 +82,9 @@ const Home = () => {
                             description={item.description}
                             rating={item.rating}
                             key={item.id}
+                            onClick={addToCart}
                             />
-                        </Link>
+                        // </Link>
                         
                     )
                 })}
