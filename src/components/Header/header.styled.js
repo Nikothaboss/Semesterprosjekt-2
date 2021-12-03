@@ -6,18 +6,6 @@ import { motion } from "framer-motion";
 export const HeaderStyled = styled(motion.header) `
     padding: 10px 20px;
     background: ${colors.blackOpacity};
-    .searchbar{
-        color: white;
-        background: ${colors.blackOpacity};
-        padding: .5rem 1rem;
-        border: 2px solid ${colors.lightBrown};
-        width: 100%;
-        border-radius: 5px;
-        ::placeholder{
-            color: white;
-            opacity: .8;
-        }
-    }
 
     .nav-item{
         flex-direction: column;
@@ -38,9 +26,23 @@ export const HeaderStyled = styled(motion.header) `
 
 export const SearchBarStyled = styled(Flex) ` 
 flex-direction: column;
-    width: 1100px;
+    width: 100%;
     margin: auto;
     align-items: center;
+
+    .searchbar{
+        color: white;
+        background: ${colors.blackOpacity};
+        padding: .5rem 1rem;
+        border: 2px solid ${colors.lightBrown};
+        width: 100%;
+        border-radius: 5px;
+        ::placeholder{
+            color: white;
+            opacity: .8;
+        }
+    }
+
 
     .dataResults{
         position: absolute;

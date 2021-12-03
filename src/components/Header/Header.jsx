@@ -28,7 +28,7 @@ const Header = () => {
     
         }
         return (
-            <Flex alignItems="flext-start" justifyContent="space-between" width="25%">
+            <Flex alignItems="flext-start" justifyContent="space-between" width="33%">
                 <NavItem icon={<MdComputer size="1.2rem"/>} location="Products"/>
                 <NavItem icon={<MdAccountCircle size="1.2rem"/>} location="Login"/>
                 <NavItem icon={<MdShoppingCart size="1.2rem"/>} location="Cart"/>

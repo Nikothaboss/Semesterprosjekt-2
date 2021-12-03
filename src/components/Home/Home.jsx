@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import hero from "../../img/hero-bg.jpg"
 import { HomeStyled, StyledCard } from './home.styled'
 import { useFetch } from '../../utils/fetch'
+import { useLocalStorage } from '../../utils/localStorage'
 import { base_url } from '../../utils/API'
 import { checkRating } from '../../utils/setRating'
 import { colors } from '../../app.styled'
@@ -40,7 +41,8 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 
 const Home = () => {
     const {data} = useFetch(base_url + "/products")
-    const [cart, setCart] = useState([])
+    // const [cart, setCart] = useState([])
+    const [cart, setCart] = useLocalStorage("cart", [])
 
     
     
