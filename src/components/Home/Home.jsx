@@ -43,14 +43,16 @@ const Home = () => {
     const {data} = useFetch(base_url + "/products")
     // const [cart, setCart] = useState([])
     const [cart, setCart] = useLocalStorage("cart", [])
-
     
     
     const addToCart = (e) =>{
+        
         const product = data.filter(x => x.id.toString() === e.target.id.toString())[0]
-        const inCart = cart.includes(product)
-        console.log("In Cart ?", inCart)
-        if(!inCart){
+        // const product = data[data.findIndex(x => x.id.toString() === e.target.id.toString())]
+        // const inCart = cart.includes(product)
+        const inCart = cart.find(x => x === product)
+        console.log("In Cart ?", inCart, )
+        if(!inCart && product){
             cart.push(product)
             setCart(cart)
             console.log("Add", cart)
