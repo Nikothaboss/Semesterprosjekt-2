@@ -26,7 +26,7 @@ export const HomeStyled = styled(Box)`
 
             h2{
             color: ${colors.orange};
-            font-size: 68px;
+            font-size: 48px;
         }
 
             h1{
@@ -50,7 +50,7 @@ export const HomeStyled = styled(Box)`
             font-size: 24px;
             padding: 10px;
             border-radius: 5px;
-            width: 100%;
+            width: 60%;
             text-align: center;
         }
 

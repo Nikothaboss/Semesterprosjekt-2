@@ -11,6 +11,7 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
+// import { addToCart } from '../../utils/addToCart'
 // import { containsObject } from '../../utils/addToCart'
 // import { addToCart } from '../../utils/addToCart'
 
@@ -20,11 +21,13 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
     return (
         <StyledCard>
             <MotionFlex whileHover={{scale: 1.01}} flexDir="column" className="featuredCard" >
-                <img src={image_url} alt={title} key={id}/>
+                <Link to={"/products/" + id}><img src={image_url} alt={title} key={id}/></Link>
                 <Flex className="cardInfo">
-                    <Heading className="title">{title}</Heading>
-                    <Text>{description.length > 80 ? description.substring(0, 65) + "..." : description }</Text>
-                    {checkRating(rating)}
+                    <Link to={"/products/" + id}>
+                        <Heading className="title">{title}</Heading>
+                        <Text>{description.length > 80 ? description.substring(0, 65) + "..." : description }</Text>
+                        {checkRating(rating)}
+                    </Link>
             
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
                         {/* {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> } */}
@@ -41,28 +44,34 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 
 const Home = () => {
     const {data} = useFetch(base_url + "/products")
-    // const [cart, setCart] = useState([])
-    const [cart, setCart] = useLocalStorage("cart", [])
-    
-    
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
+    console.log(cart)
+    // const [cart, setCart] = useLocalStorage("cart", localStorage.getItem("cart") || [])
+
     const addToCart = (e) =>{
         
-        const product = data.filter(x => x.id.toString() === e.target.id.toString())[0]
-        // const product = data[data.findIndex(x => x.id.toString() === e.target.id.toString())]
-        // const inCart = cart.includes(product)
-        const inCart = cart.find(x => x === product)
+        // const product = data.filter(x => x.id.toString() === e.target.id.toString())[0]
+        const product = data[data.findIndex(x => x.id.toString() === e.target.id.toString())]
+        const inCart = cart.includes(JSON.stringify(product))
+        // const inCart = cart.find(x => x === product)
         console.log("In Cart ?", inCart, )
         if(!inCart && product){
             cart.push(product)
             setCart(cart)
+            window.localStorage.setItem("cart", JSON.stringify(cart))
             console.log("Add", cart)
-        }else{
+        }else if(inCart && product){
             cart.splice(cart.indexOf(product), 1)
             setCart(cart)
+            window.localStorage.setItem("cart", JSON.stringify(cart))
             console.log("remove", cart)
         }
         
     }
+    
+    
+    
+
 
     return (
         <HomeStyled>

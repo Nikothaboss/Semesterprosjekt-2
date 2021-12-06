@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export const HeaderStyled = styled(motion.header) `
     padding: 10px 20px;
     background: ${colors.blackOpacity};
+    color: #f2f2f2;
 
     .nav-item{
         flex-direction: column;

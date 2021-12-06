@@ -1,10 +1,11 @@
+import {Switch, Route, useLocation} from "react-router-dom"
+import { GlobalStyle } from "./app.styled";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
-import ProductDetail from "./components/Products/ProductDetail";
-import { GlobalStyle } from "./app.styled";
-import {Switch, Route, useLocation} from "react-router-dom"
-import {AnimatePresence} from "framer-motion"
 import Products from "./components/Products/Products";
+import ProductDetail from "./components/Products/ProductDetail";
+import Cart from "./components/Cart/Cart";
+import {AnimatePresence} from "framer-motion"
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,10 @@ function App() {
 
         <Route exact={true} path="/Products/:id">
           <ProductDetail />
+        </Route>
+
+        <Route exact={true} path="/Cart">
+          <Cart />
         </Route>
 
       </Switch>

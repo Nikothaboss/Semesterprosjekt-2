@@ -1,15 +1,6 @@
-// export const findIndex = (array, item) => {
-//     return array.map((x) =>{
-//         return x.id
-//     }).indexOf(item)
+import { base_url } from "./API"
+import { useFetch } from "./fetch"
+import { useLocalStorage } from "./localStorage"
 
-    
-// }
 
-export const containsObject =(obj, array) => {
-    return array.some(elem => elem.id === obj.id)
-}
 
-export const addToCart = (array) =>{
-
-}
