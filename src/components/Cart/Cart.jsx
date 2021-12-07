@@ -1,19 +1,41 @@
 import { CartStyled } from './cart.styled'
-import React from 'react'
-import { Flex, Heading, Box, Text } from '@chakra-ui/layout'
+import { useState } from 'react'
+import { Flex, Heading, Text, Center } from '@chakra-ui/layout'
 import Button from './Button'
 import { colors } from '../../app.styled'
 import { MdClose } from 'react-icons/md'
+import { useLocalStorage } from '../../utils/localStorage'
 
 const Cart = () => {
-    const cart = JSON.parse(window.localStorage.getItem("cart"))
+    const [cart, setCart] = useLocalStorage("cart", [])
     const uniqueProducts = cart.filter((product, index) =>{
         const _product = JSON.stringify(product)
         return index === cart.findIndex(obj => {
             return JSON.stringify(obj) === _product
         })
     })
-    console.log(uniqueProducts)
+
+    const [uniqueProd, setUniqueProd] = useState(uniqueProducts)
+    
+    
+
+    const handleDelete = (e) =>{
+        // setUniqueProd(uniqueProd.splice(uniqueProd.findIndex(x => x.id === e.target.id)), 1)
+        const product = uniqueProd[uniqueProd.findIndex(x => x.id.toString() === e.target.id.toString())]
+        
+        uniqueProd.splice((uniqueProd.indexOf(product)), 1)
+        // console.log(uniqueProd)
+        setUniqueProd(uniqueProd)
+
+        const newCart = cart.filter((item)=>{
+            return item.id.toString() !== e.target.id.toString()
+        })
+
+        setCart(newCart)
+
+        // setCart()
+    }
+    
     return (
         <CartStyled>
             <Flex className="CartMainContent">
@@ -37,18 +59,20 @@ const Cart = () => {
                     </Flex>
                 </Flex>
                 <div className="devider"></div>
-                <Flex className="products" flexDir="column" w="100%">
-                    {uniqueProducts.map((product) =>(
-                        <Flex justifyContent="space-between">
-                            <Flex>
+                <Flex className="products" flexDir="column" w="100%" overflow="scroll">
+                    {uniqueProd.map((product) =>(
+                        <Flex justifyContent="space-between" key={product.id}>
+                            <Flex alignItems="center">
                                 <img src={product.image_url} alt={product.title} />
-                                <Heading />
-                                
+                                <Heading fontSize="1rem" ml="1rem" w="50%">{product.title}</Heading>
+
                             </Flex>
                             <Flex width="50%" justifyContent="space-between" alignItems="center">
-                                <Text w="33%">PlaceHolder</Text>
-                                <Text w="33%">${product.price}</Text>
-                                <MdClose />
+                                <Text w="20.3%">PlaceHolder</Text>
+                                <Text w="19.3%">${product.price}</Text>
+                                <Center w="16.3%" id={product.id} cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9999999" bg="red" >
+                                    <MdClose size="1.2rem"  />
+                                </Center>
                             </Flex>
 
                         </Flex>
