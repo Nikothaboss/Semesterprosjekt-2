@@ -64,7 +64,7 @@ const Cart = () => {
                         <Flex justifyContent="space-between" key={product.id}>
                             <Flex alignItems="center">
                                 <img src={product.image_url} alt={product.title} />
-                                <Heading fontSize="1rem" ml="1rem" w="50%">{product.title}</Heading>
+                                <Heading fontSize="1rem" ml="1rem" w="15rem">{product.title}</Heading>
 
                             </Flex>
                             <Flex width="50%" justifyContent="space-between" alignItems="center">
