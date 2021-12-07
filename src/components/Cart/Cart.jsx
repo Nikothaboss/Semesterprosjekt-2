@@ -87,7 +87,7 @@ const Cart = () => {
                 </Flex>
                 <div className="devider"></div>
                     <HStack w="100%" >
-                        <Text fontSize="1.3rem">Sum: ${Math.floor(parseInt(sumTotal()))} </Text>
+                        <Text fontSize="1.3rem">Sum: ${Math.floor(parseInt(sumTotal()))}</Text>
                     </HStack>
             </Flex>
 
