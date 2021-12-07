@@ -1,12 +1,14 @@
 import { Box, Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { colors } from "../../app.styled";
 
 export const CartStyled = styled(motion(Flex)) `
     height: 90.7vh;
     .CartMainContent {
         background: #f2f2f2;
         width: 1100px;
+        color: ${colors.darkBlue};
         margin: auto;
         border: 1px solid red;
         height: 80vh;
@@ -18,6 +20,7 @@ export const CartStyled = styled(motion(Flex)) `
 
     .buttons{
         justify-content: flex-end;
+        width: 100%;
     }
 
     .devider{

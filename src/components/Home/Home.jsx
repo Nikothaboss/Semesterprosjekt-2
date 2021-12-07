@@ -28,11 +28,8 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
                         <Text>{description.length > 80 ? description.substring(0, 65) + "..." : description }</Text>
                         {checkRating(rating)}
                     </Link>
-            
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
-                        {/* {inStock ? <Text as="span">In Stock</Text> : <Text as="span">Out of Stock</Text> } */}
                         <h3>${price}</h3>
-            
                         <Button id={id} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} zIndex="999" >Add</Button>
                     </Flex>
             
@@ -44,9 +41,9 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 
 const Home = () => {
     const {data} = useFetch(base_url + "/products")
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
-    console.log(cart)
-    // const [cart, setCart] = useLocalStorage("cart", localStorage.getItem("cart") || [])
+    // const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
+   
+    const [cart, setCart] = useLocalStorage("cart", [])
 
     const addToCart = (e) =>{
         

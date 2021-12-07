@@ -1,6 +1,6 @@
 import { CartStyled } from './cart.styled'
 import { useState } from 'react'
-import { Flex, Heading, Text, Center } from '@chakra-ui/layout'
+import { Flex, Heading, Text, Center, HStack } from '@chakra-ui/layout'
 import Button from './Button'
 import { colors } from '../../app.styled'
 import { MdClose } from 'react-icons/md'
@@ -16,26 +16,31 @@ const Cart = () => {
     })
 
     const [uniqueProd, setUniqueProd] = useState(uniqueProducts)
-    
-    
 
     const handleDelete = (e) =>{
-        // setUniqueProd(uniqueProd.splice(uniqueProd.findIndex(x => x.id === e.target.id)), 1)
         const product = uniqueProd[uniqueProd.findIndex(x => x.id.toString() === e.target.id.toString())]
-        
         uniqueProd.splice((uniqueProd.indexOf(product)), 1)
-        // console.log(uniqueProd)
         setUniqueProd(uniqueProd)
-
         const newCart = cart.filter((item)=>{
             return item.id.toString() !== e.target.id.toString()
         })
-
         setCart(newCart)
-
-        // setCart()
     }
-    
+
+    const sumTotal = () =>{
+        const total = uniqueProd.map(product => {
+            return product.price * cart.filter(item => item.title === product.title).length
+        })
+        console.log(total)
+        if(total.length === 0){
+            return 0
+        }else{
+            const reducer = (accumulator, curr) => accumulator + curr;
+            return total.reduce(reducer)
+        }
+
+    }
+   
     return (
         <CartStyled>
             <Flex className="CartMainContent">
@@ -43,16 +48,16 @@ const Cart = () => {
                     <Button
                     linkTo="Products" 
                     buttonText="Continue Shopping" 
-                    padding="1.2rem"
+                    padding=".7rem 1.2rem"
                     bg={colors.orange}
                     border={"3px solid " + colors.darkBrown}
                     color="#f2f2f2"
                     />
                 </Flex>
-                <Heading w="100%" textAlign="left" as="h1">Cart</Heading>
+                <Heading w="100%" textAlign="left" as="h1" fontSize="1.7rem">Cart</Heading>
                 <div className="devider"></div>
                 <Flex justifyContent="flex-end" w="100%">
-                    <Flex justifyContent="space-between" w="50%">
+                    <Flex justifyContent="space-between" w="53%">
                         <Heading fontSize="1.2rem">Quantity</Heading>
                         <Heading fontSize="1.2rem">Price</Heading>
                         <Heading fontSize="1.2rem">Remove</Heading>
@@ -68,9 +73,11 @@ const Cart = () => {
 
                             </Flex>
                             <Flex width="50%" justifyContent="space-between" alignItems="center">
-                                <Text w="20.3%">PlaceHolder</Text>
-                                <Text w="19.3%">${product.price}</Text>
-                                <Center w="16.3%" id={product.id} cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9999999" bg="red" >
+                                <Center>
+                                    <Text textAlign="center" w="3.5rem">{cart.filter(item =>item.title === product.title).length}</Text>
+                                </Center>
+                                <Text w="3rem">${Math.floor(cart.filter(item =>item.title === product.title).length * product.price)}</Text>
+                                <Center w="16.3%" cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9999999" bg="red" >
                                     <MdClose size="1.2rem"  />
                                 </Center>
                             </Flex>
@@ -78,7 +85,12 @@ const Cart = () => {
                         </Flex>
                     ))}
                 </Flex>
+                <div className="devider"></div>
+                    <HStack w="100%" >
+                        <Text fontSize="1.3rem">Sum: ${Math.floor(parseInt(sumTotal()))} </Text>
+                    </HStack>
             </Flex>
+
             
         </CartStyled>
     )
