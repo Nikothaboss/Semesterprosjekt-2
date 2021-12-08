@@ -23,7 +23,7 @@ export const CartStyled = styled(motion(Flex)) `
         width: 100%;
     }
 
-    .devider{
+    .divider{
         height: 2px;
         background: black;
         width: 100%;

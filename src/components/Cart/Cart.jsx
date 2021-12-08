@@ -55,7 +55,7 @@ const Cart = () => {
                     />
                 </Flex>
                 <Heading w="100%" textAlign="left" as="h1" fontSize="1.7rem">Cart</Heading>
-                <div className="devider"></div>
+                <div className="divider"></div>
                 <Flex justifyContent="flex-end" w="100%">
                     <Flex justifyContent="space-between" w="53%">
                         <Heading fontSize="1.2rem">Quantity</Heading>
@@ -63,7 +63,7 @@ const Cart = () => {
                         <Heading fontSize="1.2rem">Remove</Heading>
                     </Flex>
                 </Flex>
-                <div className="devider"></div>
+                <div className="divider"></div>
                 <Flex className="products" flexDir="column" w="100%" overflow="scroll">
                     {uniqueProd.map((product) =>(
                         <Flex justifyContent="space-between" key={product.id}>
@@ -85,7 +85,7 @@ const Cart = () => {
                         </Flex>
                     ))}
                 </Flex>
-                <div className="devider"></div>
+                <div className="divider"></div>
                     <HStack w="100%" >
                         <Text fontSize="1.3rem">Sum: ${Math.floor(parseInt(sumTotal()))}</Text>
                     </HStack>

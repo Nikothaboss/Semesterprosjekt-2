@@ -6,6 +6,7 @@ import Products from "./components/Products/Products";
 import ProductDetail from "./components/Products/ProductDetail";
 import Cart from "./components/Cart/Cart";
 import {AnimatePresence} from "framer-motion"
+import Login from "./components/Login/Login";
 
 function App() {
   const location = useLocation();
@@ -30,6 +31,10 @@ function App() {
 
         <Route exact={true} path="/Cart">
           <Cart />
+        </Route>
+
+        <Route exact={true} path="/Login">
+          <Login />
         </Route>
 
       </Switch>
