@@ -10,7 +10,6 @@ export const LoginStyled = styled(Flex) `
         margin: auto;
         background: ${colors.blackOpacity};
         border: 1px solid ${colors.darkBrown};
-
     }
 
 `
