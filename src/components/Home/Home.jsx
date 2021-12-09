@@ -19,7 +19,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 
     return (
         <StyledCard>
-            <MotionFlex whileHover={{scale: 1.01}} flexDir="column" className="featuredCard" >
+            <MotionFlex whileHover={{scale: 0.994}} flexDir="column" className="featuredCard" >
                 <Link to={"/products/" + id}><img src={image_url} alt={title} key={id}/></Link>
                 <Flex className="cardInfo">
                     <Link to={"/products/" + id}>
