@@ -18,7 +18,7 @@ export const useFetch = (url, request) =>{
             setHasError(true)
             setLoading(false)
         }
-    }, [url]);
+    }, [url, request]);
 
     useEffect(()=>{
         getProducts();

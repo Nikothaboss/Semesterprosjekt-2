@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import hero from "../../img/hero-bg.jpg"
 import { HomeStyled, StyledCard } from './home.styled'
 import { useFetch } from '../../utils/fetch'

@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react'
-import { Flex, Heading, Text } from '@chakra-ui/layout'
+import { useState } from 'react'
+import { Flex, Heading } from '@chakra-ui/layout'
 import { LoginStyled, FormStyled } from './login.styled'
 import {
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
   } from '@chakra-ui/react'
   import { Input } from '@chakra-ui/input'
-  import { useFetch } from '../../utils/fetch'
   import { useLocalStorage } from '../../utils/localStorage'
   import {base_url} from "../../utils/API"
 
@@ -18,6 +15,8 @@ import {
 const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [token, setToken] = useLocalStorage("token", "")
+    const [user, setUser] = useLocalStorage("user", "")
 
 
     const logIn = async () =>{
@@ -35,6 +34,13 @@ const Login = () => {
             const res = await fetch(url, request)
             const data = await res.json()
             console.log(data)
+            if(data.user){
+                setToken(data.jwt)
+                setUser(data.user)
+                console.log(token, user)
+                window.location.href = "/Admin"
+
+            }
         }catch(err){
             console.log(err)
         }

@@ -8,10 +8,13 @@ import { useResize } from '../../utils/resize';
 // import { AnimatePresence } from 'framer-motion';
 import { useFetch } from '../../utils/fetch';
 import { base_url } from '../../utils/API';
+import { useLocalStorage } from '../../utils/localStorage';
 
 const Header = () => {
     const {screenWidth} = useResize()
     const {data} = useFetch(base_url +"/products")
+    const [token] = useLocalStorage("token")
+    const [user] = useLocalStorage("user", "")
 
     const Nav = () =>{
         const NavItem = ({icon, location=""}) =>{
@@ -30,7 +33,7 @@ const Header = () => {
         return (
             <Flex alignItems="flext-start" justifyContent="space-between" width="33%">
                 <NavItem icon={<MdComputer size="1.2rem"/>} location="Products"/>
-                <NavItem icon={<MdAccountCircle size="1.2rem"/>} location="Login"/>
+                <NavItem icon={<MdAccountCircle size="1.2rem"/>} location={user.username && token ? "Admin" : "Login"}/>
                 <NavItem icon={<MdShoppingCart size="1.2rem"/>} location="Cart"/>
             </Flex>
         )

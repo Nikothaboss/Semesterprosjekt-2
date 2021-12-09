@@ -3,7 +3,6 @@ import { base_url } from "../../utils/API"
 import { ProductsStyled } from "./products.styled"
 import { Grid } from "@chakra-ui/layout"
 import { FeaturedCard } from "../Home/Home"
-import { Link } from "react-router-dom"
 import { useLocalStorage } from "../../utils/localStorage"
 const Products = () => {
     const [cart, setCart] = useLocalStorage("cart", localStorage.getItem("cart") || [])
