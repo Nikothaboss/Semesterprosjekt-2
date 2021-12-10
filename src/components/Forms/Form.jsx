@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
-import {
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-  } from '@chakra-ui/react'
-
-  import { FormStyled } from "./form.styled"
-  import { Flex, Center, Heading } from '@chakra-ui/layout'
+import { FormControl, FormLabel, FormErrorMessage, FormHelperText, } from '@chakra-ui/react'
+import { FormStyled } from "./form.styled"
+import { Flex, Center, Heading } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
 import { base_url } from '../../utils/API'
 import { useLocalStorage } from '../../utils/localStorage'
@@ -28,7 +22,7 @@ const Form = () => {
 
     const addProduct = async () =>{
         
-        const body = JSON.stringify({title: "hey", rating: 2, description: "plsmann", price: 22.22, image_url: "https://www.komplett.no/img/p/1200/1152277.jpg", featured: false,})
+        const body = JSON.stringify({title: title, rating: rating, description: description, price: price, image_url: image, featured: featured,})
         const request = {
             method: "POST",
             body: body,
@@ -55,7 +49,7 @@ const Form = () => {
 
 
     return (
-        <Flex flexDir="column" bg={colors.blackOpacity} p="1.2rem">
+        <Flex flexDir="column" bg={colors.blackOpacity} p="2.2rem 0rem">
             <FormStyled onSubmit={handleSubmit}>
                     <Heading>Create New Product</Heading>
                     <FormControl id="title" className="formItem">

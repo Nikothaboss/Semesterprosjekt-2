@@ -9,14 +9,17 @@ export const FormStyled = styled.form `
         width: 100%;
         padding: 5px;
         color: ${colors.darkBlue};
-        
     }
+
+   
+
 
     #ratingInput{
         padding: 0;
         width: 80%;
         outline: none;
         margin-right: 8%;
+        /* background: yellow; */
     }
 
     .description{
