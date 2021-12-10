@@ -1,12 +1,13 @@
 import {useFetch} from "../../utils/fetch"
 import { base_url } from "../../utils/API"
 import { ProductsStyled } from "./products.styled"
-import { Grid } from "@chakra-ui/layout"
+import { Grid, Center } from "@chakra-ui/layout"
 import { FeaturedCard } from "../Home/Home"
 import { useLocalStorage } from "../../utils/localStorage"
+import Loader from "../../utils/Loader"
 const Products = () => {
     const [cart, setCart] = useLocalStorage("cart", localStorage.getItem("cart") || [])
-    const {data} = useFetch(base_url + "/Products")
+    const {data, loading} = useFetch(base_url + "/Products")
     const addToCart = (e) =>{
         // const product = data[data.findIndex(x => x.id.toString() === e.target.id.toString())]
         // const inCart = cart.find(x => x === product)
@@ -26,23 +27,26 @@ const Products = () => {
     }
     return (
         <ProductsStyled>
-            <Grid className="products-grid">
-                {data.map((item) =>{
-                    return(                         
-                    
-                        <FeaturedCard
-                        image_url={item.image_url}
-                        title={item.title}
-                        id={item.id}
-                        price={item.price}
-                        description={item.description}
-                        rating={item.rating}
-                        key={item.id}
-                        onClick={addToCart}
-                        />
-                    )
-                 })}
-            </Grid>
+            {loading ? <Center h="100vh"> <Loader /> </Center> : (
+                            <Grid className="products-grid">
+                            {data.map((item) =>{
+                                return(                         
+                                
+                                    <FeaturedCard
+                                    image_url={item.image_url}
+                                    title={item.title}
+                                    id={item.id}
+                                    price={item.price}
+                                    description={item.description}
+                                    rating={item.rating}
+                                    key={item.id}
+                                    onClick={addToCart}
+                                    />
+                                )
+                             })}
+                        </Grid>
+            ) }
+
         </ProductsStyled>
     )
 }

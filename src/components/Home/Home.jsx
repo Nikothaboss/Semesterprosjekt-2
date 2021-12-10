@@ -6,10 +6,11 @@ import { base_url } from '../../utils/API'
 import { checkRating } from '../../utils/setRating'
 import { colors } from '../../app.styled'
 import { Link } from 'react-router-dom'
-import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/layout'
+import { Box, Flex, Grid, Heading, Text, Center } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
+import Loader from "../../utils/Loader"
 // import { addToCart } from '../../utils/addToCart'
 // import { containsObject } from '../../utils/addToCart'
 // import { addToCart } from '../../utils/addToCart'
@@ -39,8 +40,9 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 }
 
 const Home = () => {
-    const {data} = useFetch(base_url + "/products")
+    const {data, loading} = useFetch(base_url + "/products")
     // const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
+    console.log(loading)
    
     const [cart, setCart] = useLocalStorage("cart", [])
 
@@ -78,10 +80,10 @@ const Home = () => {
                     <Link to="/Products" className="hero-link">Products</Link>
                 </Flex>
             </Box>
+            {loading ? <Center h="50vh"> <Loader /> </Center> : (
             <Grid className="featured" maxW="1100px" m="auto">
                 {data.map((item)=>{
                    return item.featured && (
-                        // <Link to={"/Products" + "/" + item.id}>
                             <FeaturedCard
                             image_url={item.image_url}
                             title={item.title}
@@ -92,11 +94,11 @@ const Home = () => {
                             key={item.id}
                             onClick={addToCart}
                             />
-                        // </Link>
-                        
                     )
                 })}
             </Grid>
+            )}
+
         </HomeStyled>
     )
 }

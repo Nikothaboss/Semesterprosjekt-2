@@ -6,8 +6,8 @@ import { colors } from '../../app.styled'
 import { base_url } from '../../utils/API'
 import { useLocalStorage } from '../../utils/localStorage'
 
-const Form = () => {
-    
+const EditForm = () => {
+
     const [token] = useLocalStorage("token")
 
     const [rating, setRating] = useState(1)
@@ -20,37 +20,9 @@ const Form = () => {
     const url = base_url + "/products"
 
 
-    const addProduct = async () =>{
-        
-        const body = JSON.stringify({title: title, rating: rating, description: description, price: price, image_url: image, featured: featured,})
-        const request = {
-            method: "POST",
-            body: body,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
-            },
-        };
-
-        try{
-            const data = await fetch(url, request);
-            const res = await data.json()
-            console.log(res)
-            
-        }catch(err){
-            console.log(err)
-        }
-    }
-
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        addProduct()
-    }
-
-
     return (
         <Flex flexDir="column" bg={colors.blackOpacity} p="2.2rem 0rem">
-            <FormStyled onSubmit={handleSubmit}>
+            <FormStyled >
                     <Heading>Create New Product</Heading>
                     <FormControl id="title" className="formItem">
                         <FormLabel>Title</FormLabel>
@@ -97,4 +69,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default EditForm

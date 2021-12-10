@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart";
 import {AnimatePresence} from "framer-motion"
 import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
+import EditForm from "./components/Forms/EditForm";
 
 function App() {
   const location = useLocation();
@@ -42,6 +43,9 @@ function App() {
           <Admin />
         </Route>
 
+        <Route exact={true} path="/Admin/:id">
+          <EditForm />
+        </Route>
       </Switch>
     </AnimatePresence>
     </>
