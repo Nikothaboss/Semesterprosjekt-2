@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText, } from '@chakra-ui/react'
 import { FormStyled } from "./form.styled"
-import { Flex, Center, Heading } from '@chakra-ui/layout'
+import { Flex, Text, Heading } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
-import { base_url } from '../../utils/API'
 import { useLocalStorage } from '../../utils/localStorage'
+import { motion } from 'framer-motion'
 
-const EditForm = () => {
-
+const EditForm = ({onClick, prodName}) => {
+    
+    
+    // const {data} = useFetch(url)
     const [token] = useLocalStorage("token")
 
     const [rating, setRating] = useState(1)
@@ -17,13 +19,31 @@ const EditForm = () => {
     const [featured, setFeatured] = useState(false)
     const [title, setTitle] = useState("")
 
-    const url = base_url + "/products"
+    const MotionFlex = motion(Flex)
+
+
 
 
     return (
-        <Flex flexDir="column" bg={colors.blackOpacity} p="2.2rem 0rem">
+        <MotionFlex 
+        flexDir="column" 
+        bg={colors.blackOpacity} 
+        p="2.2rem 0rem" 
+        position="absolute" 
+        top="0" 
+        left="0" 
+        w="100%"
+        initial={{scale: 0,}}
+        animate={{scale: 1, }}
+        exit={{ opacity: 0, scale: 0}}
+        transition={{duration: .3}}
+        
+        >
             <FormStyled >
-                    <Heading>Create New Product</Heading>
+                    <Flex justifyContent="space-between">
+                        <Heading fontSize="1.2rem">{prodName}</Heading>
+                        <Text onClick={onClick} textDecor="underline" cursor="pointer">Back to products</Text>
+                    </Flex>
                     <FormControl id="title" className="formItem">
                         <FormLabel>Title</FormLabel>
                         <input type="text" onChange={(e)=> setTitle(e.target.value)} />
@@ -65,7 +85,7 @@ const EditForm = () => {
                     <button type="submit" className="submitBtn">Add</button>
             
             </FormStyled>
-        </Flex>
+        </MotionFlex>
     )
 }
 
