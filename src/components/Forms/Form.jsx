@@ -59,10 +59,38 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
         }
     }
 
+    const deleteProduct = async () =>{
+        const url = base_url + "/products/" + id
+        const request = {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        }
+        try{
+            const res = await fetch(url, request)
+            const data = await res.json()
+            console.log(data)
+        }catch{
+
+        }
+    }
+
 
     const handleSubmit = (e) =>{
         e.preventDefault()
         variant === "create" && addProduct() || variant === "edit" && editProduct()
+        window.location.href = "/Admin"
+    }
+
+    const handleDelete = () => {
+        const doDelete = window.confirm("Are you sure you want to delete this product?")
+        console.log(doDelete)
+
+        if(doDelete){
+            deleteProduct()
+            window.location.href = "/Admin"
+        }
     }
 
 
@@ -71,7 +99,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
             <FormStyled onSubmit={handleSubmit}>
                     <Flex justifyContent="space-between">
                         <Heading fontSize="1.2rem">{variant === "create" ? "Create New Product" : prodName}</Heading>
-                        <Text onClick={onClick} textDecor="underline" cursor="pointer">Back to products</Text>
+                        {variant === "edit" && <Text onClick={onClick} textDecor="underline" cursor="pointer">Back to products</Text>}
                     </Flex>
                     <FormControl id="title" className="formItem">
                         <FormLabel>Title</FormLabel>
@@ -80,7 +108,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
 
                     <FormControl id="price" className="formItem">
                         <FormLabel>Price</FormLabel>
-                        <input type="text" value={price} onChange={e => setPrice(parseFloat(e.target.value))} />
+                        <input type="text" value={price} onChange={e => setPrice(e.target.value)} />
                     </FormControl>
 
                     <Flex justifyContent="space-between" w="100%">
@@ -111,7 +139,10 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
 
 
 
-                    <button type="submit" className="submitBtn">{variant === "create" ? "Add" : "Edit"}</button>
+                    <Flex justifyContent="space-between">
+                        <button type="submit" className="submitBtn">{variant === "create" ? "Add" : "Edit"}</button>
+                        {variant === "edit" && <button type="button" className="deleteBtn" onClick={handleDelete}>Delete</button>}
+                    </Flex>
             
             </FormStyled>
         </Flex>

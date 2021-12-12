@@ -37,17 +37,17 @@ const Admin = () => {
     }
 
     const handleClick = (e) =>{
-        setEditFormOpen(!editFormOpen)
         const product = getObj(e.target.id)
-
-        setId(e.target.id)
+        
+        setId(product.id)
         setTitle(product.title)
         setDescription(product.description)
         setPrice(product.price)
         setRating(product.rating)
         setFeatured(product.featured)
         setImage(product.image_url)
-
+        
+        setEditFormOpen(!editFormOpen)
         console.log(id, title, description, price, rating, featured, image)
     }
 
@@ -58,13 +58,10 @@ const Admin = () => {
             <Flex w="1100px" m="auto">
                 <Tabs w="100%">
                 <TabList>
-                    <Tab color="#f3f3f3">Create</Tab>
                     <Tab color="#f3f3f3">Edit</Tab>
+                    <Tab color="#f3f3f3">Create</Tab>
                 </TabList>
                 <TabPanels>
-                    <TabPanel>
-                        <Form variant="create"/>
-                    </TabPanel>
                     <TabPanel position="relative">
                         <AnimatePresence >
                             {data.map(item => (
@@ -103,6 +100,9 @@ const Admin = () => {
                                 prodFeatured={featured}
                                 />}
                             </AnimatePresence>
+                    </TabPanel>
+                    <TabPanel>
+                        <Form variant="create"/>
                     </TabPanel>
                 </TabPanels>
                 </Tabs>

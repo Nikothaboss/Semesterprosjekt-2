@@ -1,7 +1,7 @@
+import Button from './Button'
 import { CartStyled } from './cart.styled'
 import { useState } from 'react'
 import { Flex, Heading, Text, Center, HStack } from '@chakra-ui/layout'
-import Button from './Button'
 import { colors } from '../../app.styled'
 import { MdClose } from 'react-icons/md'
 import { useLocalStorage } from '../../utils/localStorage'

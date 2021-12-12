@@ -45,5 +45,11 @@ export const FormStyled = styled.form `
         border-radius: 5px;
     }
 
+    .deleteBtn{
+        background: red;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
 
 `
