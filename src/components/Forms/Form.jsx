@@ -6,16 +6,16 @@ import { colors } from '../../app.styled'
 import { base_url,  } from '../../utils/API'
 import { useLocalStorage } from '../../utils/localStorage'
 
-const Form = ({variant, id, onClick, prodName}) => {
+const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPrice, prodImage, prodFeatured}) => {
     
     const [token] = useLocalStorage("token")
 
-    const [rating, setRating] = useState(1)
-    const [description, setDescription] = useState("")
-    const [price, setPrice] = useState(0)
-    const [image, setImage] = useState("")
-    const [featured, setFeatured] = useState(false)
-    const [title, setTitle] = useState("")
+    const [rating, setRating] = useState(prodRate)
+    const [description, setDescription] = useState(prodDescription)
+    const [price, setPrice] = useState(prodPrice)
+    const [image, setImage] = useState(prodImage)
+    const [featured, setFeatured] = useState(prodFeatured)
+    const [title, setTitle] = useState(prodName)
 
     const editProduct = async () => {
         const url = base_url + "/products/" + id
@@ -59,10 +59,6 @@ const Form = ({variant, id, onClick, prodName}) => {
         }
     }
 
-    
-
-
-
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -79,18 +75,18 @@ const Form = ({variant, id, onClick, prodName}) => {
                     </Flex>
                     <FormControl id="title" className="formItem">
                         <FormLabel>Title</FormLabel>
-                        <input type="text" onChange={(e)=> setTitle(e.target.value)} />
+                        <input type="text" onChange={(e)=> setTitle(e.target.value)} value={title} />
                     </FormControl>
 
                     <FormControl id="price" className="formItem">
                         <FormLabel>Price</FormLabel>
-                        <input type="text" onChange={e => setPrice(parseFloat(e.target.value))} />
+                        <input type="text" value={price} onChange={e => setPrice(parseFloat(e.target.value))} />
                     </FormControl>
 
                     <Flex justifyContent="space-between" w="100%">
                         <FormControl id="image_url" className="formItem">
                             <FormLabel>Image</FormLabel>
-                            <input type="text" onChange={e => setImage(e.target.value)} />
+                            <input type="text" value={image} onChange={e => setImage(e.target.value)} />
                             <FormHelperText>Paste any image-url</FormHelperText>
                         </FormControl>
 
@@ -103,7 +99,7 @@ const Form = ({variant, id, onClick, prodName}) => {
 
                     <FormControl id="description" className="formItem">
                         <FormLabel>Description</FormLabel>
-                        <textarea className="description" onChange={e => setDescription(e.target.value)}></textarea>
+                        <textarea className="description" value={description} onChange={e => setDescription(e.target.value)}></textarea>
                     </FormControl>
 
                     <FormControl id="featured" className="formItem">
@@ -115,7 +111,7 @@ const Form = ({variant, id, onClick, prodName}) => {
 
 
 
-                    <button type="submit" className="submitBtn">Add</button>
+                    <button type="submit" className="submitBtn">{variant === "create" ? "Add" : "Edit"}</button>
             
             </FormStyled>
         </Flex>

@@ -1,10 +1,10 @@
-import EditForm from '../Forms/EditForm'
+
 import Form from '../Forms/Form'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Flex, Text } from '@chakra-ui/layout'
 import { AdminStyled } from "./admin.styled"
 import { useFetch } from '../../utils/fetch'
-import { base_url, editProduct } from '../../utils/API'
+import { base_url } from '../../utils/API'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -51,18 +51,7 @@ const Admin = () => {
         console.log(id, title, description, price, rating, featured, image)
     }
 
-    const handleTitle = (e) => setTitle(e.target.value)
-    const handlePrice = (e) => setPrice(e.target.value)
-    const handleImage = (e) => setImage(e.target.value)
-    const handleRange = (e) => setRating(e.target.value)
-    const handleFeatured = (e) => setFeatured(!featured)
-    const handleDescription = (e) => setDescription(e.target.value)
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        editProduct(title, rating, description, price, image, featured, id )
-    }
-
+    
 
     return (
         <AdminStyled>
@@ -101,7 +90,18 @@ const Admin = () => {
                             ))}
                         </AnimatePresence>
                             <AnimatePresence exitBeforeEnter>
-                                {editFormOpen && <Form variant="edit" id={id} onClick={closeForm} prodName={title}/>}
+                                {editFormOpen && 
+                                <Form 
+                                variant="edit" 
+                                id={id} 
+                                onClick={closeForm} 
+                                prodName={title} 
+                                prodRate={rating} 
+                                prodDescription={description}
+                                prodImage={image}
+                                prodPrice={price}
+                                prodFeatured={featured}
+                                />}
                             </AnimatePresence>
                     </TabPanel>
                 </TabPanels>
