@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText, } from '@chakra-ui/react'
 import { FormStyled } from "./form.styled"
-import { Flex, Center, Heading } from '@chakra-ui/layout'
+import { Flex, Heading, Text } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
-import { base_url } from '../../utils/API'
+import { base_url,  } from '../../utils/API'
 import { useLocalStorage } from '../../utils/localStorage'
 
-const Form = () => {
+const Form = ({variant, id, onClick, prodName}) => {
     
     const [token] = useLocalStorage("token")
 
@@ -17,11 +17,28 @@ const Form = () => {
     const [featured, setFeatured] = useState(false)
     const [title, setTitle] = useState("")
 
-    const url = base_url + "/products"
-
-
+    const editProduct = async () => {
+        const url = base_url + "/products/" + id
+        const body = JSON.stringify({title: title, rating: rating, description: description, price: price, image_url: image, featured: featured,})
+        const request = {
+            method: "PUT",
+            body: body,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+        }
+        try{
+            const res = await fetch(url, request)
+            const data = await res.json()
+            console.log(data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    
     const addProduct = async () =>{
-        
+        const url = base_url + "/products"    
         const body = JSON.stringify({title: title, rating: rating, description: description, price: price, image_url: image, featured: featured,})
         const request = {
             method: "POST",
@@ -31,7 +48,7 @@ const Form = () => {
                 Authorization: `Bearer ${token}`
             },
         };
-
+    
         try{
             const data = await fetch(url, request);
             const res = await data.json()
@@ -42,16 +59,24 @@ const Form = () => {
         }
     }
 
+    
+
+
+
+
     const handleSubmit = (e) =>{
         e.preventDefault()
-        addProduct()
+        variant === "create" && addProduct() || variant === "edit" && editProduct()
     }
 
 
     return (
         <Flex flexDir="column" bg={colors.blackOpacity} p="2.2rem 0rem">
             <FormStyled onSubmit={handleSubmit}>
-                    <Heading>Create New Product</Heading>
+                    <Flex justifyContent="space-between">
+                        <Heading fontSize="1.2rem">{variant === "create" ? "Create New Product" : prodName}</Heading>
+                        <Text onClick={onClick} textDecor="underline" cursor="pointer">Back to products</Text>
+                    </Flex>
                     <FormControl id="title" className="formItem">
                         <FormLabel>Title</FormLabel>
                         <input type="text" onChange={(e)=> setTitle(e.target.value)} />
