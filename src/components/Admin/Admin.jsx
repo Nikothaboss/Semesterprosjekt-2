@@ -1,4 +1,5 @@
 
+import React from 'react'
 import Form from '../Forms/Form'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Flex, Text } from '@chakra-ui/layout'
@@ -9,7 +10,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 
-const Admin = () => {
+
+const Admin = React.memo(() => {
 
     const {data} = useFetch(base_url + "/products")
     const [editFormOpen, setEditFormOpen] = useState(false)
@@ -36,7 +38,12 @@ const Admin = () => {
         setEditFormOpen(false)
     }
 
-    const handleClick = (e) =>{
+    const openForm = () => {
+        setEditFormOpen(true)
+        console.log(id, title, description, price, rating, featured, image)
+    }
+
+    const handleHover = (e) =>{
         const product = getObj(e.target.id)
         
         setId(product.id)
@@ -47,8 +54,6 @@ const Admin = () => {
         setFeatured(product.featured)
         setImage(product.image_url)
         
-        setEditFormOpen(!editFormOpen)
-        console.log(id, title, description, price, rating, featured, image)
     }
 
     
@@ -69,12 +74,14 @@ const Admin = () => {
                                 className="editItem"
                                 id={item.id}
                                 name={item.title}
-                                onClick={handleClick}
-                                display={editFormOpen ? "none" : "flex"}
+                                onMouseDown={handleHover}
+                                onMouseUp={openForm}
+                                // display={editFormOpen ? "none" : "flex"}
                                 whileHover={{scale: 1.01}}
                                 whileTap={{scale: 0.99}}
                                 initial={{scale: 0}}
                                 animate={{scale: 1}}
+                                exit={{opacity: 0}}
                                 key={item.id}
                                 
                                 >
@@ -84,7 +91,9 @@ const Admin = () => {
                                     <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">Rating: {item.rating}</Text>
                                     <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">Featured: {item.featured ? "Yes" : "No"}</Text>
                                 </MotionFlex>
-                            ))}
+    
+                            ))
+                            }
                         </AnimatePresence>
                             <AnimatePresence exitBeforeEnter>
                                 {editFormOpen && 
@@ -98,6 +107,7 @@ const Admin = () => {
                                 prodImage={image}
                                 prodPrice={price}
                                 prodFeatured={featured}
+                                
                                 />}
                             </AnimatePresence>
                     </TabPanel>
@@ -109,6 +119,6 @@ const Admin = () => {
             </Flex>
         </AdminStyled>
     )
-}
+})
 
 export default Admin
