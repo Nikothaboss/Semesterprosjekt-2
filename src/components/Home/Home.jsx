@@ -42,7 +42,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
 const Home = () => {
     const {data, loading} = useFetch(base_url + "/products")
     // const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")))
-    console.log(loading)
+    console.log("loading: ",loading)
    
     const [cart, setCart] = useLocalStorage("cart", [])
 

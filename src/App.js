@@ -19,27 +19,27 @@ function App() {
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.key}>
 
-        <Route exact={true} path="/">
+        <Route  path="/">
           <Home />
         </Route>
 
-        <Route exact={true} path="/Products">
+        <Route  path="/Products">
           <Products />
         </Route>
 
-        <Route exact={true} path="/Products/:id">
+        <Route  path="/Products/:id">
           <ProductDetail />
         </Route>
 
-        <Route exact={true} path="/Cart">
+        <Route  path="/Cart">
           <Cart />
         </Route>
 
-        <Route exact={true} path="/Login">
+        <Route  path="/Login">
           <Login />
         </Route>
 
-        <Route exact={true} path="/Admin">
+        <Route  path="/Admin">
           <Admin />
         </Route>
 

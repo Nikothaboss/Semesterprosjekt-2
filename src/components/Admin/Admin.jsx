@@ -76,12 +76,11 @@ const Admin = React.memo(() => {
                                 name={item.title}
                                 onMouseDown={handleHover}
                                 onMouseUp={openForm}
-                                // display={editFormOpen ? "none" : "flex"}
+                                display={editFormOpen ? "none" : "flex"}
                                 whileHover={{scale: 1.01}}
                                 whileTap={{scale: 0.99}}
                                 initial={{scale: 0}}
                                 animate={{scale: 1}}
-                                exit={{opacity: 0}}
                                 key={item.id}
                                 
                                 >
