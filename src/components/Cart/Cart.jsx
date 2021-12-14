@@ -42,7 +42,7 @@ const Cart = () => {
     }
    
     return (
-        <CartStyled>
+        <CartStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Flex className="CartMainContent">
                 <Flex className="buttons">
                     <Button

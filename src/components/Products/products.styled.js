@@ -1,8 +1,10 @@
 import { Flex } from "@chakra-ui/layout"
 import styled from "styled-components"
 import { colors } from "../../app.styled"
+import { Box } from "@chakra-ui/layout"
+import { motion } from "framer-motion"
 
-export const ProductsStyled = styled.div `
+export const ProductsStyled = styled(motion(Box)) `
 
     .products-grid{
         padding: 20px 0;

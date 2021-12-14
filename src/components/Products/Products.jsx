@@ -26,7 +26,7 @@ const Products = () => {
         
     }
     return (
-        <ProductsStyled>
+        <ProductsStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             {loading ? <Center h="100vh"> <Loader /> </Center> : (
                             <Grid className="products-grid">
                             {data.map((item) =>{

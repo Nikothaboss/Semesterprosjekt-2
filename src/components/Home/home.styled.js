@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Box } from "@chakra-ui/layout";
 import { colors, fonts } from "../../app.styled";
-export const HomeStyled = styled(Box)`
+import { motion } from "framer-motion";
+export const HomeStyled = styled(motion(Box))`
     .bg-img{
         height: 50vh;
         background-position: center;

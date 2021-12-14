@@ -11,6 +11,7 @@ import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
 import Loader from "../../utils/Loader"
+import { transition } from "@chakra-ui/styled-system"
 // import { addToCart } from '../../utils/addToCart'
 // import { containsObject } from '../../utils/addToCart'
 // import { addToCart } from '../../utils/addToCart'
@@ -72,7 +73,7 @@ const Home = () => {
 
 
     return (
-        <HomeStyled>
+        <HomeStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Box bgImage={`url("${hero}")`} className="bg-img">
                 <Flex className="hero-text">
                     <h1>SALE!</h1>

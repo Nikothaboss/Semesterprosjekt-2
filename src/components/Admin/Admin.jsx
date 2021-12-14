@@ -59,7 +59,7 @@ const Admin = React.memo(() => {
     
 
     return (
-        <AdminStyled>
+        <AdminStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Flex w="1100px" m="auto">
                 <Tabs w="100%">
                 <TabList>
@@ -79,7 +79,7 @@ const Admin = React.memo(() => {
                                 display={editFormOpen ? "none" : "flex"}
                                 whileHover={{scale: 1.01}}
                                 whileTap={{scale: 0.99}}
-                                initial={{scale: 0}}
+                                initial={editFormOpen ? {scale: 0} : {scale: 1}}
                                 animate={{scale: 1}}
                                 key={item.id}
                                 
@@ -94,7 +94,7 @@ const Admin = React.memo(() => {
                             ))
                             }
                         </AnimatePresence>
-                            <AnimatePresence exitBeforeEnter>
+                            <AnimatePresence >
                                 {editFormOpen && 
                                 <Form 
                                 variant="edit" 
