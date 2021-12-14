@@ -16,7 +16,7 @@ const Admin = React.memo(() => {
     const {data} = useFetch(base_url + "/products")
     const [editFormOpen, setEditFormOpen] = useState(false)
     
-    const [id, setId] = useState(null)
+    const [id, setId] = useState("")
     const [rating, setRating] = useState(1)
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState(0)

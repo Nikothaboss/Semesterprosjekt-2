@@ -13,7 +13,7 @@ const ProductDetail = () => {
     console.log(data)
 
     return (
-        <DetailsStyled>
+        <DetailsStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transition: {duration: .4}}}transition={{duration: .7}}>
             <Flex background="#f2f2f2">
                 <Flex flexDir="column" className="left">
                 

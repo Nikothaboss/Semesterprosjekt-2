@@ -10,12 +10,12 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
     
     const [token] = useLocalStorage("token")
 
-    const [rating, setRating] = useState(prodRate)
-    const [description, setDescription] = useState(prodDescription)
-    const [price, setPrice] = useState(prodPrice)
-    const [image, setImage] = useState(prodImage)
-    const [featured, setFeatured] = useState(prodFeatured)
-    const [title, setTitle] = useState(prodName)
+    const [rating, setRating] = useState(prodRate || 1)
+    const [description, setDescription] = useState(prodDescription || "")
+    const [price, setPrice] = useState(prodPrice || 0)
+    const [image, setImage] = useState(prodImage || "")
+    const [featured, setFeatured] = useState(prodFeatured || false)
+    const [title, setTitle] = useState(prodName || "")
 
     const editProduct = async () => {
         const url = base_url + "/products/" + id
@@ -61,6 +61,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
 
     const deleteProduct = async () =>{
         const url = base_url + "/products/" + id
+        console.log(url)
         const request = {
             method: "DELETE",
             headers: {
@@ -80,7 +81,10 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
     const handleSubmit = (e) =>{
         e.preventDefault()
         variant === "create" && addProduct() || variant === "edit" && editProduct()
-        window.location.href = "/Admin"
+        setTimeout(()=>{
+            window.location.href = "/Admin"
+
+        }, 100)
     }
 
     const handleDelete = () => {
@@ -89,7 +93,10 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
 
         if(doDelete){
             deleteProduct()
-            window.location.href = "/Admin"
+            setTimeout(()=>{
+                window.location.href = "/Admin"
+
+            }, 100)
         }
     }
 
