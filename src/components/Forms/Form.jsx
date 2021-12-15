@@ -10,7 +10,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
     
     const [token] = useLocalStorage("token")
 
-    const [rating, setRating] = useState(prodRate || 1)
+    const [rating, setRating] = useState(prodRate || 3)
     const [description, setDescription] = useState(prodDescription || "")
     const [price, setPrice] = useState(prodPrice || 0)
     const [image, setImage] = useState(prodImage || "")
