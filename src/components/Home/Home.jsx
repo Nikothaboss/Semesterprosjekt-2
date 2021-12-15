@@ -11,10 +11,9 @@ import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
 import { MdShoppingCart } from 'react-icons/md'
 import Loader from "../../utils/Loader"
-import { transition } from "@chakra-ui/styled-system"
-// import { addToCart } from '../../utils/addToCart'
-// import { containsObject } from '../../utils/addToCart'
-// import { addToCart } from '../../utils/addToCart'
+
+
+
 
 export const FeaturedCard = ({image_url, title, id, rating, price, description, onClick}) =>{
     const MotionFlex = motion(Flex);
@@ -76,8 +75,8 @@ const Home = () => {
         <HomeStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Box bgImage={`url("${hero}")`} className="bg-img">
                 <Flex className="hero-text">
-                    <h1>SALE!</h1>
-                    <h2>UP TO 70%</h2>
+                    <Heading as="h1">SALE!</Heading>
+                    <Heading>UP TO 70%</Heading>
                     <Link to="/Products" className="hero-link">Products</Link>
                 </Flex>
             </Box>

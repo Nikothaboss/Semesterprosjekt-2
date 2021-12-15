@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Box } from "@chakra-ui/layout";
-import { colors, fonts } from "../../app.styled";
+import { colors, device, fonts } from "../../app.styled";
 import { motion } from "framer-motion";
 export const HomeStyled = styled(motion(Box))`
     .bg-img{
@@ -25,14 +25,34 @@ export const HomeStyled = styled(motion(Box))`
             justify-content: space-between;
             /* transform: translateY(30px); */
 
+            @media ${device.tablet}{
+                    width: 65%;
+                }
+
             h2{
-            color: ${colors.orange};
-            font-size: 48px;
-        }
+                color: ${colors.orange};
+                font-size: 48px;
+
+                @media ${device.laptop}{
+                    font-size: 36px;
+                }
+
+                @media ${device.tablet}{
+                    font-size: 28px;
+                }
+            }
 
             h1{
                 color: ${colors.lightBrown};
                 font-size: 80px;
+
+                @media ${device.laptop}{
+                font-size: 68px;
+                }
+
+                @media ${device.tablet}{
+                font-size: 54px;
+                }
             }
 
             h1, h2{ 
@@ -40,7 +60,7 @@ export const HomeStyled = styled(motion(Box))`
             font-family: ${fonts.poppins};
             font-weight: 600;
             /* text-shadow: 0px 2px ${colors.blackOpacity}, 0px 4px ${colors.blackOpacity}, 0px 6px ${colors.blackOpacity}; */
-        }
+            }
 
         }
 
@@ -53,6 +73,10 @@ export const HomeStyled = styled(motion(Box))`
             border-radius: 5px;
             width: 60%;
             text-align: center;
+
+            @media ${device.tablet}{
+                    padding: 5px
+                }
         }
 
 
