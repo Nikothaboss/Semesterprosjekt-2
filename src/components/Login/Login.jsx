@@ -19,7 +19,8 @@ const Login = () => {
     const [user, setUser] = useLocalStorage("user", "")
 
 
-    const logIn = async () =>{
+    const logIn = async (e) =>{
+        e.preventDefault()
         const body = JSON.stringify({identifier: username, password: password});
         const url = base_url + "/auth/local"
         const request = {
@@ -50,10 +51,10 @@ const Login = () => {
     
 
     return (
-        <LoginStyled>
+        <LoginStyled onSubmit={logIn}>
 
             <Flex className="formContainer">
-                <FormStyled w="500px" m="auto">
+                <FormStyled w="80%" m="auto" >
                     <Heading textAlign="left" w="100%" mb="1rem" fontSize="1.9rem" color="#f3f3f3">Login as Admin</Heading>
                     <FormControl id="username" className="formItem">
                         <FormLabel color="#f2f2f2">Username</FormLabel>
@@ -62,7 +63,7 @@ const Login = () => {
                     <FormControl id="password" className="formItem">
                         <FormLabel color="#f2f2f2">Password</FormLabel>
                         <Input type="password" onChange={e => setPassword(e.target.value)} color="#f3f3f3"/>
-                        <button onClick={logIn}>Log in</button>
+                        <button type="submit">Log in</button>
                     </FormControl>
                 </FormStyled>
             </Flex>
