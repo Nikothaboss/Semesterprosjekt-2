@@ -8,12 +8,14 @@ import { useFetch } from '../../utils/fetch'
 import { base_url } from '../../utils/API'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useResize } from '../../utils/resize'
 
 
 
 const Admin = React.memo(() => {
 
     const {data} = useFetch(base_url + "/products")
+    const {screenWidth} = useResize()
     const [editFormOpen, setEditFormOpen] = useState(false)
     
     const [id, setId] = useState("")
@@ -85,10 +87,10 @@ const Admin = React.memo(() => {
                                 
                                 >
                                     <img id={item.id} src={item.image_url} alt={item.title} />
-                                    <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">{item.title}</Text>
-                                    <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">${item.price}</Text>
-                                    <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">Rating: {item.rating}</Text>
-                                    <Text id={item.id} fontSize=".9rem" w="200px" textAlign="center">Featured: {item.featured ? "Yes" : "No"}</Text>
+                                    <Text id={item.id} fontSize=".9rem" maxW="200px" w="200px" textAlign="center">{item.title}</Text>
+                                    <Text id={item.id} display={screenWidth < 390 ? "none" : "block"} fontSize=".9rem" maxW="200px" w="150px" textAlign="center">${item.price}</Text>
+                                    <Text id={item.id} display={screenWidth < 550 ? "none" : "block"} fontSize=".9rem" maxW="200px" w="150px" textAlign="center">Rating: {item.rating}</Text>
+                                    <Text id={item.id} display={screenWidth < 768 ? "none" : "block"} fontSize=".9rem" maxW="200px" w="150px" textAlign="center">Featured: {item.featured ? "Yes" : "No"}</Text>
                                 </MotionFlex>
     
                             ))

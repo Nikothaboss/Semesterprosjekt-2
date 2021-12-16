@@ -1,7 +1,8 @@
 import { Box, Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { colors } from "../../app.styled";
+import { colors, device } from "../../app.styled";
+
 
 export const CartStyled = styled(motion(Flex)) `
     height: 90.7vh;
@@ -10,12 +11,23 @@ export const CartStyled = styled(motion(Flex)) `
         width: 1100px;
         color: ${colors.darkBlue};
         margin: auto;
-        border: 1px solid red;
         height: 80vh;
         align-items: center;
         flex-direction: column;
         padding: 40px;
         
+    }
+
+    .cartItem{
+        margin-bottom: 10px;
+        border: 1px solid ${colors.darkBlue};
+        @media ${device.tablet}{
+            flex-direction: row;
+        }
+
+        .prodInfo{
+            flex-direction: column;
+        }
     }
 
     .buttons{

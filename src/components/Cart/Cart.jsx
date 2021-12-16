@@ -44,37 +44,20 @@ const Cart = () => {
     return (
         <CartStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Flex className="CartMainContent">
-                <Flex className="buttons">
-                    <Button
-                    linkTo="Products" 
-                    buttonText="Continue Shopping" 
-                    padding=".7rem 1.2rem"
-                    bg={colors.orange}
-                    border={"3px solid " + colors.darkBrown}
-                    color="#f2f2f2"
-                    />
-                </Flex>
+
                 <Heading w="100%" textAlign="left" as="h1" fontSize="1.7rem">Cart</Heading>
-                <div className="divider"></div>
-                <Flex justifyContent="flex-end" w="100%">
-                    <Flex justifyContent="space-between" w="53%">
-                        <Heading fontSize="1.2rem">Quantity</Heading>
-                        <Heading fontSize="1.2rem">Price</Heading>
-                        <Heading fontSize="1.2rem">Remove</Heading>
-                    </Flex>
-                </Flex>
                 <div className="divider"></div>
                 <Flex className="products" flexDir="column" w="100%" overflow="scroll">
                     {uniqueProd.map((product) =>(
-                        <Flex justifyContent="space-between" key={product.id}>
+                        <Flex justifyContent="space-between" key={product.id} className="cartItem">
                             <Flex alignItems="center">
                                 <img src={product.image_url} alt={product.title} />
                                 <Heading fontSize="1rem" ml="1rem" w="15rem">{product.title}</Heading>
 
                             </Flex>
-                            <Flex width="50%" justifyContent="space-between" alignItems="center">
-                                <Center>
-                                    <Text textAlign="center" w="3.5rem">{cart.filter(item =>item.title === product.title).length}</Text>
+                            <Flex width="50%" justifyContent="space-between" alignItems="center" className="prodInfo">
+                                <Center w="100px">
+                                    <Text textAlign="center">Quantity: {cart.filter(item =>item.title === product.title).length}</Text>
                                 </Center>
                                 <Text w="3rem">${Math.floor(cart.filter(item =>item.title === product.title).length * product.price)}</Text>
                                 <Center w="16.3%" cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9999999" bg="red" >
@@ -88,6 +71,16 @@ const Cart = () => {
                 <div className="divider"></div>
                     <HStack w="100%" >
                         <Text fontSize="1.3rem">Sum: ${Math.floor(parseInt(sumTotal()))}</Text>
+                        <Flex className="buttons">
+                            <Button
+                            linkTo="Products" 
+                            buttonText="Continue Shopping" 
+                            padding=".7rem 1.2rem"
+                            bg={colors.orange}
+                            border={"3px solid " + colors.darkBrown}
+                            color="#f2f2f2"
+                            />
+                        </Flex>
                     </HStack>
             </Flex>
 

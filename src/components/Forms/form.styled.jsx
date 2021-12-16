@@ -1,14 +1,23 @@
 import styled from "styled-components";
-import { colors } from "../../app.styled";
+import { colors, device } from "../../app.styled";
 export const FormStyled = styled.form `
     color: white;
     width: 60%;
     margin: auto;
+    @media ${device.tablet}{
+        width: 80%;
+    }
     
     input, textarea{
         width: 100%;
         padding: 5px;
         color: ${colors.darkBlue};
+    }
+
+    .imageAndRating{
+        @media ${device.mobileL}{
+            flex-direction: column;
+        }
     }
 
    

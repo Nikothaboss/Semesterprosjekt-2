@@ -118,7 +118,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
                         <input type="text" value={price} onChange={e => setPrice(e.target.value)} />
                     </FormControl>
 
-                    <Flex justifyContent="space-between" w="100%">
+                    <Flex justifyContent="space-between" w="100%" className="imageAndRating">
                         <FormControl id="image_url" className="formItem">
                             <FormLabel>Image</FormLabel>
                             <input type="text" value={image} onChange={e => setImage(e.target.value)} />
