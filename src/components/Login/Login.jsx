@@ -1,16 +1,10 @@
 import { useState } from 'react'
 import { Flex, Heading } from '@chakra-ui/layout'
 import { LoginStyled, FormStyled } from './login.styled'
-import {
-    FormControl,
-    FormLabel,
-  } from '@chakra-ui/react'
-  import { Input } from '@chakra-ui/input'
-  import { useLocalStorage } from '../../utils/localStorage'
-  import {base_url} from "../../utils/API"
-
-
-
+import { FormControl, FormLabel,} from '@chakra-ui/react'
+import { Input } from '@chakra-ui/input'
+import { useLocalStorage } from '../../utils/localStorage'
+import {base_url} from "../../utils/API"
 
 const Login = () => {
     const [username, setUsername] = useState("")
