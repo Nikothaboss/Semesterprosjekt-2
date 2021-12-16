@@ -38,7 +38,7 @@ export const HomeStyled = styled(motion(Box))`
                 }
 
                 @media ${device.tablet}{
-                    font-size: 28px;
+                    font-size: 48px;
                 }
             }
 
