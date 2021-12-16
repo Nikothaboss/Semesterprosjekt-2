@@ -39,7 +39,7 @@ const Header = () => {
             window.location.href = location.pathname
         }
         return (
-            <Flex alignItems="flext-start" justifyContent="space-between" width="33%">
+            <Flex alignItems="flext-start" justifyContent="space-between" width="37%">
                 <NavItem icon={<MdComputer size="1.2rem"/>} href="/Products" text="Products" />
                 <NavItem icon={<MdAccountCircle size="1.2rem"/>} href={user.username && token ? "/Admin" : "/Login"} text={user.username && token ? "Admin" : "Login"} />
                 <NavItem icon={<MdShoppingCart size="1.2rem"/>} href="/Cart" text="Cart" />

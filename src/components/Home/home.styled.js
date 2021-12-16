@@ -38,7 +38,15 @@ export const HomeStyled = styled(motion(Box))`
                 }
 
                 @media ${device.tablet}{
-                    font-size: 48px;
+                    font-size: 40px;
+                }
+  
+                @media ${device.mobileL}{
+                    font-size: 32px;
+                }
+
+                @media ${device.mobileM}{
+                    font-size: 28px;
                 }
             }
 
@@ -76,7 +84,11 @@ export const HomeStyled = styled(motion(Box))`
 
             @media ${device.tablet}{
                     padding: 5px
-                }
+            }
+
+            @media ${device.mobileL}{
+                    font-size: 18px;
+            }
         }
 
 
