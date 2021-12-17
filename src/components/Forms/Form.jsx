@@ -17,6 +17,8 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
     const [featured, setFeatured] = useState(prodFeatured || false)
     const [title, setTitle] = useState(prodName || "")
 
+    const [isImgUrl, setIsImgUrl] = useState(null)
+
     const editProduct = async () => {
         const url = base_url + "/products/" + id
         const body = JSON.stringify({title: title, rating: rating, description: description, price: price, image_url: image, featured: featured,})
@@ -80,11 +82,19 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        variant === "create" && addProduct() || variant === "edit" && editProduct()
-        setTimeout(()=>{
-            window.location.href = "/Admin"
+        const imageFormat = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|webp)/g
+        if(imageFormat.test(image)){
+            setIsImgUrl(true)
+            variant === "create" && addProduct() || variant === "edit" && editProduct()
+            setTimeout(()=>{
+                window.location.href = "/Admin"
+    
+            }, 100)
+        }else{
+            setIsImgUrl(false)
+        }
 
-        }, 100)
+
     }
 
     const handleDelete = () => {
@@ -121,6 +131,7 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
                     <Flex justifyContent="space-between" w="100%" className="imageAndRating">
                         <FormControl id="image_url" className="formItem image">
                             <FormLabel>Image</FormLabel>
+                            {isImgUrl === false && <Text fontSize=".8rem" color="red">Please provide a valid image-url</Text>}
                             <input type="text" value={image} onChange={e => setImage(e.target.value)} />
                             <FormHelperText>Paste any image-url</FormHelperText>
                         </FormControl>
