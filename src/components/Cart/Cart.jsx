@@ -5,8 +5,10 @@ import { Flex, Heading, Text, Center, HStack } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
 import { MdClose } from 'react-icons/md'
 import { useLocalStorage } from '../../utils/localStorage'
+import { useResize } from "../../utils/resize"
 
 const Cart = () => {
+    const {screenWidth} = useResize()
     const [cart, setCart] = useLocalStorage("cart", [])
     const uniqueProducts = cart.filter((product, index) =>{
         const _product = JSON.stringify(product)
@@ -49,13 +51,13 @@ const Cart = () => {
                 <div className="divider"></div>
                 <Flex className="products" flexDir="column" w="100%" overflow="scroll">
                     {uniqueProd.map((product) =>(
-                        <Flex justifyContent="space-between" key={product.id} className="cartItem">
-                            <Flex alignItems="center">
+                        <Flex justifyContent="space-between" key={product.id} className="cartItem" flexDir={screenWidth < 550 ? "column" : "row"}>
+                            <Flex alignItems="center" flexDir={screenWidth < 550 ? "column" : "row"}>
                                 <img src={product.image_url} alt={product.title} />
-                                <Heading fontSize="1rem" ml="1rem" w="15rem">{product.title}</Heading>
+                                <Heading fontSize="1rem" ml="1rem" w="100%">{product.title}</Heading>
 
                             </Flex>
-                            <Flex width="50%" justifyContent="space-between" alignItems="center" className="prodInfo">
+                            <Flex width="50%" justifyContent="space-between" alignItems="center" className="prodInfo" flexDir={screenWidth < 550 ? "row" : "column"}>
                                 <Center w="100px">
                                     <Text textAlign="center">Quantity: {cart.filter(item =>item.title === product.title).length}</Text>
                                 </Center>

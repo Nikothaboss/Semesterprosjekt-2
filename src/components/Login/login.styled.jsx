@@ -16,6 +16,7 @@ export const LoginStyled = styled.form `
             border: 1px solid ${colors.orange};
             margin-top: 20px;
             border-radius: 5px;
+            color: #f3f3f3
         }
     }
 

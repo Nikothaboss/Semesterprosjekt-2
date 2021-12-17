@@ -57,7 +57,7 @@ const Login = () => {
                     <FormControl id="password" className="formItem">
                         <FormLabel color="#f2f2f2">Password</FormLabel>
                         <Input type="password" onChange={e => setPassword(e.target.value)} color="#f3f3f3"/>
-                        <button type="submit">Log in</button>
+                        <button type="submit" class="logInBtn">Log in</button>
                     </FormControl>
                 </FormStyled>
             </Flex>

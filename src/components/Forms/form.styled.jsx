@@ -37,11 +37,14 @@ export const FormStyled = styled.form `
 
     .formItem{
         margin: 10px 0;
+        padding: 0;
+        
+    }
+
+    .image{
+        margin-right: 9px;
     }
     
-    .rating{
-        margin-left: 5%;
-    }
 
     .checkbox{
         width: 3%;

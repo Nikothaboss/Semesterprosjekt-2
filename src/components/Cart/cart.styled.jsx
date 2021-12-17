@@ -16,17 +16,28 @@ export const CartStyled = styled(motion(Flex)) `
         flex-direction: column;
         padding: 40px;
         
+        @media ${device.tablet}{
+            width: 90%;
+        }
     }
 
     .cartItem{
+        /* flex-direction: row; */
         margin-bottom: 10px;
         border: 1px solid ${colors.darkBlue};
-        @media ${device.tablet}{
-            flex-direction: row;
-        }
+        
+        /* @media ${device.tablet}{
+            flex-direction: column;
+        } */
 
         .prodInfo{
-            flex-direction: column;
+            flex-direction: row;
+            @media ${device.tablet}{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
         }
     }
 
@@ -52,4 +63,7 @@ export const CartStyled = styled(motion(Flex)) `
 export const BtnStyled = styled(Box) `
     border-radius: 5px;
     font-weight: 500;
+    @media ${device.mobileL}{
+        padding: 2px;
+    }
 `
