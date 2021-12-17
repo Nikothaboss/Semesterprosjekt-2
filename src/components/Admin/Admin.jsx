@@ -1,8 +1,9 @@
 
 import React from 'react'
 import Form from '../Forms/Form'
+import Loader from '../../utils/Loader'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import { Flex, Text } from '@chakra-ui/layout'
+import { Flex, Text, Center } from '@chakra-ui/layout'
 import { AdminStyled } from "./admin.styled"
 import { useFetch } from '../../utils/fetch'
 import { base_url } from '../../utils/API'
@@ -14,7 +15,7 @@ import { useResize } from '../../utils/resize'
 
 const Admin = React.memo(() => {
 
-    const {data} = useFetch(base_url + "/products")
+    const {data, loading} = useFetch(base_url + "/products")
     const {screenWidth} = useResize()
     const [editFormOpen, setEditFormOpen] = useState(false)
     
@@ -71,7 +72,7 @@ const Admin = React.memo(() => {
                 <TabPanels>
                     <TabPanel position="relative">
                         <AnimatePresence >
-                            {data.map(item => (
+                            {loading ? <Center h="100vh"> <Loader /> </Center> : data.map(item => (
                                 <MotionFlex
                                 className="editItem"
                                 id={item.id}
@@ -81,8 +82,6 @@ const Admin = React.memo(() => {
                                 display={editFormOpen ? "none" : "flex"}
                                 whileHover={{scale: 1.01}}
                                 whileTap={{scale: 0.99}}
-                                initial={editFormOpen ? {scale: 0} : {scale: 1}}
-                                animate={{scale: 1}}
                                 key={item.id}
                                 
                                 >

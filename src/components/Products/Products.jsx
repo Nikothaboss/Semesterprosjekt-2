@@ -4,10 +4,12 @@ import { ProductsStyled } from "./products.styled"
 import { Grid, Center } from "@chakra-ui/layout"
 import { FeaturedCard } from "../Home/Home"
 import { useLocalStorage } from "../../utils/localStorage"
+import { motion } from "framer-motion"
 import Loader from "../../utils/Loader"
 const Products = () => {
     const [cart, setCart] = useLocalStorage("cart", localStorage.getItem("cart") || [])
     const {data, loading} = useFetch(base_url + "/Products")
+    const MotionGrid = motion(Grid);
     const addToCart = (e) =>{
         // const product = data[data.findIndex(x => x.id.toString() === e.target.id.toString())]
         // const inCart = cart.find(x => x === product)
@@ -28,7 +30,7 @@ const Products = () => {
     return (
         <ProductsStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             {loading ? <Center h="100vh"> <Loader /> </Center> : (
-                            <Grid className="products-grid">
+                            <MotionGrid className="products-grid" initial={{y: -100, opacity: 0}} animate={{y: 0, opacity: 1}} >
                             {data.map((item) =>{
                                 return(                         
                                 
@@ -44,7 +46,7 @@ const Products = () => {
                                     />
                                 )
                              })}
-                        </Grid>
+                            </MotionGrid>
             ) }
 
         </ProductsStyled>
