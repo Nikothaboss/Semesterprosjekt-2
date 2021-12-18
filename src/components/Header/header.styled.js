@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../app.styled";
+import { colors, device } from "../../app.styled";
 import { Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 
@@ -54,9 +54,16 @@ flex-direction: column;
         background: ${colors.darkBlue};
         z-index: 999999999999999999999999999999;
         width: 100%;
+
+        @media ${device.tablet}{
+            margin-top: 60px;
+        }
     }
     img{
         width: 150px;
+        @media ${device.tablet}{
+            width: 100px;
+        }
     }
 `
 
@@ -65,15 +72,23 @@ export const DataItemStyled = styled(Flex) `
     border-top: 1px solid transparent;
     width: 50%;
     margin: 2px auto;
+    @media ${device.tablet}{
+            width: 90%
+        }
 
     &:hover{
         border-bottom: 1px solid ${colors.lightBrown};
         border-top: 1px solid ${colors.lightBrown};
     }
 
-    h4{
-        padding: 0 20px
+    h4, p{
+        padding: 0 20px;
+        @media ${device.tablet}{
+            font-size: .9rem
+        }
     }
+
+
 
 
 `

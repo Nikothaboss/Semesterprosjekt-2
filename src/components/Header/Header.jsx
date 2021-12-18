@@ -1,22 +1,26 @@
 import Logo from './Logo';
 import SearchBar from './SearchBar';
+import Burger from './Burger';
+import { useState } from 'react';
 import { Flex, Text } from '@chakra-ui/layout'
 import { HeaderStyled } from './header.styled'
 import { MdComputer, MdAccountCircle, MdShoppingCart, MdMenu, MdLogout } from "react-icons/md";
 import { NavLink, useLocation } from 'react-router-dom';
 import { useResize } from '../../utils/resize';
-// import { AnimatePresence } from 'framer-motion';
 import { useFetch } from '../../utils/fetch';
 import { base_url } from '../../utils/API';
 import { useLocalStorage } from '../../utils/localStorage';
 
 const Header = () => {
     const location = useLocation()
-    console.log(location)
     const {screenWidth} = useResize()
     const {data} = useFetch(base_url +"/products")
     const [token] = useLocalStorage("token")
     const [user] = useLocalStorage("user", "")
+
+    const [showMenu, setShowMenu] = useState(false)
+
+    const toggleMenu =()=> setShowMenu(!showMenu)
 
     const Nav = () =>{
         const NavItem = ({icon, href="", text, onClick}) =>{
@@ -54,7 +58,7 @@ const Header = () => {
             <Flex maxWidth="1100px" m="auto" justifyContent="space-between" alignItems="center">
                 <Logo />
                 <SearchBar data={data} />
-                {screenWidth > 768 ? <Nav /> : <MdMenu size="2.2rem" />}
+                {screenWidth > 768 ? <Nav /> : <Burger showMenu={showMenu} toggleMenu={toggleMenu} />}
             </Flex>
         </HeaderStyled>
     )
