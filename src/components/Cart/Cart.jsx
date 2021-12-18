@@ -1,15 +1,19 @@
 import Button from './Button'
 import { CartStyled } from './cart.styled'
 import { useState } from 'react'
-import { Flex, Heading, Text, Center, HStack } from '@chakra-ui/layout'
+import { Flex, Heading, Text, Center, HStack, Box } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
 import { MdClose } from 'react-icons/md'
 import { useLocalStorage } from '../../utils/localStorage'
 import { useResize } from "../../utils/resize"
+import { motion } from 'framer-motion'
 
 const Cart = () => {
     const {screenWidth} = useResize()
     const [cart, setCart] = useLocalStorage("cart", [])
+
+    const MotionBox = motion(Box)
+
     const uniqueProducts = cart.filter((product, index) =>{
         const _product = JSON.stringify(product)
         return index === cart.findIndex(obj => {
@@ -62,8 +66,12 @@ const Cart = () => {
                                     <Text textAlign="center">Quantity: {cart.filter(item =>item.title === product.title).length}</Text>
                                 </Center>
                                 <Text w="3rem">${Math.floor(cart.filter(item =>item.title === product.title).length * product.price)}</Text>
-                                <Center w="16.3%" cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9999999" bg="red" >
-                                    <MdClose size="1.2rem"  />
+                                <Center w="16.3%" cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9" >
+                                    {/* <MdClose size="1.2rem" id={product.id}  /> */}
+                                    <Flex flexDir="column" justifyContent="space-between" height="1rem" id={product.id}>
+                                        <MotionBox h="3px" w="1rem" bg="black" style={{rotate: 45, y: 10}} id={product.id}  ></MotionBox>
+                                        <MotionBox h="3px" w="1rem" bg="black" style={{rotate: -45, y: -5}} id={product.id} ></MotionBox>
+                                    </Flex>
                                 </Center>
                             </Flex>
 

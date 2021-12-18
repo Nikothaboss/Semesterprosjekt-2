@@ -76,7 +76,7 @@ const Header = () => {
                     bg={colors.darkBlue} 
                     left="0" 
                     w="100%" 
-                    h="90vh" 
+                    h="93vh" 
                     initial={{x: "-100%"}} 
                     animate={{x: 0}} 
                     exit={{x: "100%"}} 
@@ -85,6 +85,7 @@ const Header = () => {
                         <Link to="/" exact onClick={toggleMenu}>Home</Link>
                         <Link to="/Products" exact onClick={toggleMenu}>Products</Link>
                         <Link to={user.username && token ? "/Admin" : "/Login"} exact onClick={toggleMenu}>{user.username && token ? "Admin" : "Login"}</Link>
+                        <Link to="/Cart" exact onClick={toggleMenu}>Cart</Link>
                         {user.username && token && <Text onClick={logOut}>Log Out</Text>}
                     </MotionCenter>
                 )}

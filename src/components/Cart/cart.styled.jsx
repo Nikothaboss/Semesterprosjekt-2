@@ -24,7 +24,7 @@ export const CartStyled = styled(motion(Flex)) `
     .cartItem{
         /* flex-direction: row; */
         margin-bottom: 10px;
-        border: 1px solid ${colors.darkBlue};
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         
         /* @media ${device.tablet}{
             flex-direction: column;

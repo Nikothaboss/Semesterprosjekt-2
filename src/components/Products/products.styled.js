@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/layout"
 import styled from "styled-components"
-import { colors } from "../../app.styled"
+import { colors, device } from "../../app.styled"
 import { Box } from "@chakra-ui/layout"
 import { motion } from "framer-motion"
 
@@ -12,6 +12,10 @@ export const ProductsStyled = styled(motion(Box)) `
         margin: auto;
         grid-gap: 10px;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+        @media ${device.laptop}{
+            padding: 20px;
+        }
     }
 `
 
