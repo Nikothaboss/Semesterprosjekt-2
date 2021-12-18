@@ -23,6 +23,10 @@ export const HeaderStyled = styled(motion.header) `
         align-items: center;
     }
 
+    .hamburgerMenu > * {
+        margin: 20px 0;
+    }
+
 `
 
 export const SearchBarStyled = styled(Flex) ` 
