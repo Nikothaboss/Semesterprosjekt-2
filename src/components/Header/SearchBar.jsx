@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const DataItem = ({image_url, title, price, id, onClick}) => {
     return(
     <Link to={"/Products/" + id}>
-        <DataItemStyled justifyContent="space-between" alignItems="center" flexDir="row"  key={id}>
+        <DataItemStyled justifyContent="space-between" alignItems="center" flexDir="row" key={id} onClick={onClick}>
             <img src={image_url} alt={title} />
             <h4>{title}</h4>
             <Text>{price},-</Text>
@@ -16,7 +16,7 @@ const DataItem = ({image_url, title, price, id, onClick}) => {
     )
 }
 
-const SearchBar = ({data}) => {
+const SearchBar = ({data, onClick}) => {
     const [filteredData, setFilteredData] = useState([])
     const [inputValue, setInputValue] = useState("")
 
@@ -58,7 +58,7 @@ const SearchBar = ({data}) => {
             <Flex className="dataResults" flexDir="column">
                 {filteredData.map((item =>{
                     return (
-                        <DataItem  image_url={item.image_url} title={item.title} price={item.price} id={item.id} key={item.id} /> 
+                        <DataItem  image_url={item.image_url} title={item.title} price={item.price} id={item.id} key={item.id} onClick={onClick} /> 
                     )
                 }))}
             </Flex>

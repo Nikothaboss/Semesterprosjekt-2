@@ -22,13 +22,8 @@ export const CartStyled = styled(motion(Flex)) `
     }
 
     .cartItem{
-        /* flex-direction: row; */
         margin-bottom: 10px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        
-        /* @media ${device.tablet}{
-            flex-direction: column;
-        } */
 
         .prodInfo{
             flex-direction: row;
@@ -61,9 +56,11 @@ export const CartStyled = styled(motion(Flex)) `
 `
 
 export const BtnStyled = styled(Box) `
+    padding: 10px;
     border-radius: 5px;
     font-weight: 500;
     @media ${device.mobileL}{
-        padding: 2px;
+        padding: 7px;
+        font-size: .6rem;
     }
 `

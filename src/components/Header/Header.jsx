@@ -4,7 +4,7 @@ import Burger from './Burger';
 import { useState } from 'react';
 import { Center, Flex, Text } from '@chakra-ui/layout'
 import { HeaderStyled } from './header.styled'
-import { MdComputer, MdAccountCircle, MdShoppingCart, MdMenu, MdLogout } from "react-icons/md";
+import { MdComputer, MdAccountCircle, MdShoppingCart, MdLogout } from "react-icons/md";
 import { NavLink, useLocation } from 'react-router-dom';
 import { useResize } from '../../utils/resize';
 import { useFetch } from '../../utils/fetch';
@@ -23,6 +23,7 @@ const Header = () => {
 
     const [showMenu, setShowMenu] = useState(false)
     const toggleMenu =()=> setShowMenu(!showMenu)
+    const closeMenu =()=> setShowMenu(false)
 
     const MotionCenter = motion(Center)
 
@@ -63,7 +64,7 @@ const Header = () => {
         <HeaderStyled >
             <Flex maxWidth="1100px" m="auto" justifyContent="space-between" alignItems="center">
                 <Logo />
-                <SearchBar data={data} />
+                <SearchBar data={data} onClick={closeMenu} />
                 {screenWidth > 768 ? <Nav /> : <Burger showMenu={showMenu} toggleMenu={toggleMenu} />}
             </Flex>
             <AnimatePresence>
@@ -74,7 +75,8 @@ const Header = () => {
                     flexDir="column" 
                     pos="absolute" 
                     bg={colors.darkBlue} 
-                    left="0" 
+                    left="0"
+                    top="85px" 
                     w="100%" 
                     h="93vh" 
                     initial={{x: "-100%"}} 

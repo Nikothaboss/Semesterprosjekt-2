@@ -14,7 +14,7 @@ const ProductDetail = () => {
 
     return (
         <DetailsStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transition: {duration: .4}}}transition={{duration: .7}}>
-            <Flex background="#f2f2f2">
+            <Flex background="#f2f2f2" className="detailsContainer">
                 <Flex flexDir="column" className="left">
                 
                     <img src={data.image_url} alt={data.title} />
@@ -23,9 +23,9 @@ const ProductDetail = () => {
                 <Flex flexDir="column" className="right">
                     <h1>{data.title}</h1>
                     <h3>{data.description}</h3>
-                    <h2>{data.price}</h2>
+                    <h2>${data.price}</h2>
                     {checkRating(data.rating)}
-                    <Button width="50%" size="lg" background={colors.orange}>Add To Cart</Button>
+                    <Button width="50%" size="lg" m="10px 0" fontSize="1rem" background={colors.orange}>Add To Cart</Button>
                 
                 </Flex>
             </Flex>

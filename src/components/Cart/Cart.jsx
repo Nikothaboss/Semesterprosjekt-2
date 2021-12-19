@@ -69,8 +69,8 @@ const Cart = () => {
                                 <Center w="16.3%" cursor="pointer" id={product.id} onClick={handleDelete} zIndex="9" >
                                     {/* <MdClose size="1.2rem" id={product.id}  /> */}
                                     <Flex flexDir="column" justifyContent="space-between" height="1rem" id={product.id}>
-                                        <MotionBox h="3px" w="1rem" bg="black" style={{rotate: 45, y: 10}} id={product.id}  ></MotionBox>
-                                        <MotionBox h="3px" w="1rem" bg="black" style={{rotate: -45, y: -5}} id={product.id} ></MotionBox>
+                                        <MotionBox borderRadius="50%" h="3px" w="1rem" bg="black" style={{rotate: 45, y: 10}} id={product.id}  ></MotionBox>
+                                        <MotionBox borderRadius="50%" h="3px" w="1rem" bg="black" style={{rotate: -45, y: -5}} id={product.id} ></MotionBox>
                                     </Flex>
                                 </Center>
                             </Flex>

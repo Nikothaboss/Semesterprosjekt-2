@@ -1,4 +1,5 @@
 import hero from "../../img/hero-bg.jpg"
+import Loader from "../../utils/Loader"
 import { HomeStyled, StyledCard } from './home.styled'
 import { useFetch } from '../../utils/fetch'
 import { useLocalStorage } from '../../utils/localStorage'
@@ -9,11 +10,6 @@ import { Link } from 'react-router-dom'
 import { Box, Flex, Grid, Heading, Text, Center } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 import { motion } from 'framer-motion'
-import { MdShoppingCart } from 'react-icons/md'
-import Loader from "../../utils/Loader"
-
-
-
 
 export const FeaturedCard = ({image_url, title, id, rating, price, description, onClick}) =>{
     const MotionFlex = motion(Flex);
@@ -30,7 +26,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
                     </Link>
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
                         <h3>${price}</h3>
-                        <Button id={id} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2" rightIcon={<MdShoppingCart />} zIndex="999" >Add</Button>
+                        <Button id={id} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2"  zIndex="999" >Add to Cart</Button>
                     </Flex>
             
                 </Flex>
@@ -67,10 +63,6 @@ const Home = () => {
         
     }
     
-    
-    
-
-
     return (
         <HomeStyled initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}transition={{duration: .3}}>
             <Box bgImage={`url("${hero}")`} className="bg-img">

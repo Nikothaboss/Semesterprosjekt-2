@@ -20,17 +20,35 @@ export const ProductsStyled = styled(motion(Box)) `
 `
 
 export const DetailsStyled = styled(motion(Flex)) `
-    /* border: 1px solid white; */
     max-width: 1100px;
     margin: auto;
-    /* background: #f2f2f2; */
     color: ${colors.darkBlue};
     align-items: center;
     min-height: 90vh;
 
+    .detailsContainer{
+        @media ${device.laptop}{
+            flex-direction: column;
+            width: 50%;
+            margin: auto;
+        }
+        @media ${device.tablet}{
+            width: 70%;
+        }
+        @media ${device.mobileM}{
+            width: 90%;
+        }
+    }
+
+
+
     .left{
         width: 50%;
-        border: 1px solid red;
+
+        @media ${device.laptop}{
+            width: 100%;
+        }
+
         img{
             width: 100%;
         }
@@ -38,6 +56,26 @@ export const DetailsStyled = styled(motion(Flex)) `
 
     .right{
         width: 50%;
+        justify-content: space-between;
+        padding: 30px 20px;
+
+        @media ${device.laptop}{
+            width: 100%;
+            padding: 10px 20px;
+            height: 100%;
+        }
+
+        h1{
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+
+        h2{
+            font-weight: 700;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
 
     }
 `
