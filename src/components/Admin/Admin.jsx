@@ -81,7 +81,7 @@ const Admin = React.memo(() => {
                                 onMouseUp={openForm}
                                 display={editFormOpen ? "none" : "flex"}
                                 whileHover={{scale: 1.01}}
-                                whileTap={{scale: 0.99}}
+                                whileTap={{scale: 0.95}}
                                 key={item.id}
                                 
                                 >

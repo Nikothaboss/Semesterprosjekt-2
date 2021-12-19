@@ -23,6 +23,7 @@ export const CartStyled = styled(motion(Flex)) `
 
     .cartItem{
         margin-bottom: 10px;
+        padding: 20px 0;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
         .prodInfo{
@@ -33,6 +34,14 @@ export const CartStyled = styled(motion(Flex)) `
                 justify-content: center;
                 width: 100%;
             }
+        }
+
+        .prodHeader {
+            font-size: .9rem;
+            margin-left: 10px;
+            text-align: center;
+
+            @media ${device.tablet}
         }
     }
 
