@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormControl, FormLabel, FormErrorMessage, FormHelperText, } from '@chakra-ui/react'
+import { FormControl, FormLabel, FormHelperText, } from '@chakra-ui/react'
 import { FormStyled } from "./form.styled"
 import { Flex, Heading, Text } from '@chakra-ui/layout'
 import { colors } from '../../app.styled'
@@ -85,7 +85,8 @@ const Form = ({variant, id, onClick, prodName, prodRate, prodDescription, prodPr
         const imageFormat = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|webp)/g
         if(imageFormat.test(image)){
             setIsImgUrl(true)
-            variant === "create" && addProduct() || variant === "edit" && editProduct()
+            variant === "create" && addProduct()
+            variant === "edit" && editProduct()
             setTimeout(()=>{
                 window.location.href = "/Admin"
     

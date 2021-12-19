@@ -1,6 +1,5 @@
 import React from 'react'
 import { Flex, Text } from '@chakra-ui/layout'
-import { MdFacebook } from 'react-icons/md'
 import { colors } from '../../app.styled'
 
 const Footer = () => {
