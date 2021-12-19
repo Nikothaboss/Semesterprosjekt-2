@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart";
 import {AnimatePresence} from "framer-motion"
 import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
 
       </Switch>
     </AnimatePresence>
+    <Footer />
     </>
   );
 }

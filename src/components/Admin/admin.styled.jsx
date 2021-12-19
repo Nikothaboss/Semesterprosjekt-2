@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 
 export const AdminStyled = styled(motion(Flex)) `
+    min-height: 84vh;
     .editItem{
         justify-content: space-between;
         align-items: center;

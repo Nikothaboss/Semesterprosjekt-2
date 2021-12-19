@@ -13,6 +13,7 @@ import { motion } from 'framer-motion'
 
 export const FeaturedCard = ({image_url, title, id, rating, price, description, onClick}) =>{
     const MotionFlex = motion(Flex);
+    const MotionButton = motion(Button)
 
     return (
         <StyledCard>
@@ -26,7 +27,7 @@ export const FeaturedCard = ({image_url, title, id, rating, price, description, 
                     </Link>
                     <Flex justifyContent="space-between" alignItems="center" w="100%" >
                         <h3>${price}</h3>
-                        <Button id={id} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2"  zIndex="999" >Add to Cart</Button>
+                        <MotionButton id={id} whileTap={{scale: .9}} whileHover={{scale: 1.03,background: colors.orange}} onClick={onClick} bg={colors.orange} size="sm" mt="10px" color="#f2f2f2"  zIndex="999" >Add to Cart</MotionButton>
                     </Flex>
             
                 </Flex>
